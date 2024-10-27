@@ -7,6 +7,54 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
+# Processing pdfs
+def get_pdf_text(pdf_docs):
+    text = ""
+    for pdf in pdf_docs:
+        pdf_reader = PdfReader(pdf)
+        for page in pdf_reader.pages:
+            text += page.extract_text()
+    return text
+
+
+# Splitting text into small chunks to create embeddings
+def get_text_chunks(text):
+    text_splitter = CharacterTextSplitter(
+        separator = "\n",
+        chunk_size = 1000,
+        chunk_overlap = 200,
+        length_function = len
+    )
+    chunks = text_splitter.split_text(text)
+    return chunks
+
+
+# Using Google's embedding004 model to create embeddings and FAISS to store the embeddings
+def get_vectorstore(text_chunks):
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+    vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
+    return vectorstore
+
+
+# Handling user questions
+def handle_userinput(question):
+    response = st.session_state.conversation({"question": question})
+    st.session_state.chat_history = response['chat_history']
+    st.write(response)  # Return only the answer from the response
+
+# Storing converstations as chain of outputs
+def get_conversation_chain(vectorstore):
+    llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro-latest')
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm=llm,
+        retriever=vectorstore.as_retriever(),
+        memory=memory
+    )
+    return conversation_chain
+
+
+
 def main():
     load_dotenv()
     st.set_page_config(page_title="Chat with multiple pdfs", page_icon=":books:")
