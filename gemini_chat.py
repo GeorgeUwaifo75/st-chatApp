@@ -3,7 +3,7 @@ import os
 import google.generativeai as genai
 
 
-st.title("Chat - Georgie Boy")
+st.title("Chat - Talk2George")
 
 
 # Set Google API key
