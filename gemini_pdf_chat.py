@@ -58,12 +58,36 @@ def get_conversation_chain(vectorstore):
 def main():
     load_dotenv()
     st.set_page_config(page_title="Chat with multiple pdfs", page_icon=":books:")
+
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = None
+
     st.header("Chat with multiple PDFs :books:")
 
     user_question = st.text_input("Ask a question about your documents:")
-    st.subheader("Your documents")
-    pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
-    st.button("Process")
+
+    if user_question:
+        handle_userinput(user_question)
+
+    with st.sidebar:
+        st.subheader("Your documents")
+        pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
+        if st.button("Process"):
+            with st.spinner("Processing"):
+                raw_text = get_pdf_text(pdf_docs)
+
+                #convert to chunks
+                text_chunks = get_text_chunks(raw_text)
+                st.write(text_chunks)
+
+                #embeddings
+                vectorstore = get_vectorstore(text_chunks)
+
+
+                #create conversation chain
+                st.session_state.conversation = get_conversation_chain(vectorstore)
     
 
 if __name__ == '__main__':
