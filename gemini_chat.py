@@ -3,11 +3,11 @@ import os
 import google.generativeai as genai
 
 
-st.title("Chat - Gemini Bot")
+st.title("Chat - Georgie Boy")
 
 
 # Set Google API key
-os.environ['GOOGLE_API_KEY'] = "Your Google API Key"
+os.environ['GOOGLE_API_KEY'] = "AIzaSyBEW2ADL9Z8DSAprqzBwxIz1tDBAqGO17c"
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
 
 
