@@ -103,9 +103,13 @@ def main():
         
 
         url_input = st.text_input("Source URL:")
-
         if url_input:
             handle_urlinput(url_input)
+
+        url_input2 = st.text_input("Source URL:")
+        if url_input2:
+            handle_urlinput(url_input2)
+
 
         if st.button("Process"):
             with st.spinner("Processing"):
