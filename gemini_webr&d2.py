@@ -14,7 +14,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
 
-
+urls = []
 
 #Handle URL Input
 def handle_urlinput(url_input):
@@ -82,7 +82,6 @@ def get_conversation_chain(vectorstore):
 
 def main():
     load_dotenv()
-    urls = []
     
     st.set_page_config(page_title="Chat with multiple pdfs", page_icon=":books:")
 
