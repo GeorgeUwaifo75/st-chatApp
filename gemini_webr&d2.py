@@ -20,8 +20,8 @@ def get_web_text():
     text = ""
     loader = UnstructuredURLLoader(
     urls = [
-        "https://www.moneycontrol.com/news/india/two-women-die-6-taken-ill-after-consuming-mango-kernel-gruel-in-odisha-12856689.html",
-        "https://www.nimbleway.com/blog/use-serp-api-to-boost-rankings-and-explore-markets"
+        "https://crypto.news/tag/meme-coin/",
+        "https://bravenewcoin.com/insights/cardano-and-ethereum-whales-betting-big-on-hot-new-popular-meme-coin-cutoshi-after-its-listing-on-cmc"
 
         ] 
     )
