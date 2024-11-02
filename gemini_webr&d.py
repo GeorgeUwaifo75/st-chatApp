@@ -22,7 +22,6 @@ text_splitter = CharacterTextSplitter(
         chunk_overlap = 200,
         length_function = len
     )
-    chunks = text_splitter.split_text(text)
+chunks = text_splitter.split_text(text)
    
-
 st.write(len(chunks))
