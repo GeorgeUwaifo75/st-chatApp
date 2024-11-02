@@ -106,7 +106,7 @@ def main():
         if url_input:
             handle_urlinput(url_input)
 
-        url_input2 = st.text_input("Source URL:")
+        url_input2 = st.text_input("Source URL2:")
         if url_input2:
             handle_urlinput(url_input2)
 
