@@ -34,6 +34,6 @@ st.write(len(chunks))
 #    st.write(len(chunk))
 pd.set_option('display.max_colwidth',100)
 df = pd.read_csv("salaries.csv")
-st.write(df.shape)
+st.text(df.shape)
 
 #st.write(df.head())
