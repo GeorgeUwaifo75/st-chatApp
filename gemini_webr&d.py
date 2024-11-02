@@ -50,7 +50,7 @@ st.write(dim)
 index = faiss.IndexFlatL2(dim)
 index.add(vectors)
 
-search_query = "Show me some Jobs starting with the letter B"
+search_query = "How many Data Analyst jobs exist?"
 vec = encoder.encode(search_query)
 st.write("Vec:",vec.shape)
 
@@ -59,9 +59,9 @@ svec = np.array(vec).reshape(1,-1)
 st.write("Svec:",svec.shape)
 
 distances, I = index.search(svec, k=2)
-st.write("I val:",I[0])
+st.write("I val:",I)
 
 #st.write("Loc value is:", df.iloc[I[0]])
 
 
-st.write("Loc value:", df[I[0]])
+#st.write("Loc value:", df[I[0]])
