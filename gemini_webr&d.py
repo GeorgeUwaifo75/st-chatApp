@@ -11,4 +11,4 @@ loader = UnstructuredURLLoader(
     ] 
 )
 data = loader.load()
-st.write(data[0])
+st.write(data[0].metadata)
