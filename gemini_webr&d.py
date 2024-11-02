@@ -54,7 +54,7 @@ vec = encoder.encode(search_query)
 st.text("vec:",vec.shape)
 
 import numpy as np
-svec = np.array(vec).reshape:(1,-1)
+svec = np.array(vec).reshape(1,-1)
 st.text("svec:",svec.shape)
 
 index.search(svec, k=2)
