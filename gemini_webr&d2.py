@@ -1,4 +1,4 @@
-teimport streamlit as st
+import streamlit as st
 
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import UnstructuredURLLoader
