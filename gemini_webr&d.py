@@ -40,5 +40,6 @@ st.text(df.head())
 from sentence_transformers import SentenceTransformer
 encoder = SentenceTransformer("all-mpnet-base-v2") 
 vectors = encoder.encode(df.company_location)
-st.write(vectors.shape) 
-
+ 
+dim = vectors.shape[1]
+st.write(dim)
