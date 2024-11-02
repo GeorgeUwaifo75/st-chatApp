@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import faiss
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import UnstructuredURLLoader
@@ -53,11 +54,11 @@ search_query = "Show me some Jobs starting with the letter B"
 vec = encoder.encode(search_query)
 st.write("Vec:",vec.shape)
 
-import numpy as np
+
 svec = np.array(vec).reshape(1,-1)
 st.write("Svec:",svec.shape)
 
 distances, I = index.search(svec, k=2)
-#st.write("I:",I)
+st.write("I:",I)
 
-#st.write("Loc value:",df.loc[I[0]])
+st.write("Loc value:",df.loc[I[0]])
