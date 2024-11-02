@@ -1,4 +1,4 @@
-import streamlit as st
+teimport streamlit as st
 
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import UnstructuredURLLoader
@@ -18,7 +18,7 @@ urls = []
 
 #Handle URL Input
 def handle_urlinput(url_input):
-    urls.append(url_input)
+    urls.extend(url_input)
     st.write("URL Appended:",urls)
     
     
