@@ -14,13 +14,13 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
 urls = []
-cnt = 0
+
 
 #Handle URL Input
 def handle_urlinput(url_input):
     urls.append(url_input)
-    st.write("URL Appended:",urls[cnt])
-    cnt+=1
+    st.write("URL Appended:",urls)
+    
     
 # Processing URLs
 def get_web_text():
