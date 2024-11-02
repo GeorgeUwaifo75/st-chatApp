@@ -14,6 +14,8 @@ loader = UnstructuredURLLoader(
 data = loader.load()
 
 text = data[0]
+st.write(text)
+
 text_splitter = CharacterTextSplitter(
         separator = "\n",
         chunk_size = 1000,
@@ -23,4 +25,4 @@ text_splitter = CharacterTextSplitter(
     chunks = text_splitter.split_text(text)
    
 
-st.write(data[0].metadata)
+st.write(len(chunks))
