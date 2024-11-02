@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import UnstructuredURLLoader
 #from langchain.text_splitter import CharacterTextSplitter
@@ -29,5 +30,10 @@ text_splitter = RecursiveCharacterTextSplitter(
 chunks = text_splitter.split_text(text)
    
 st.write(len(chunks))
-for chunk in chunks:
-    st.write(len(chunk))
+#for chunk in chunks:
+#    st.write(len(chunk))
+pd.set_option('display.max_colwidth',100)
+df = pd.read_csv("salaries.csv")
+st.write(df.shape)
+
+st.write(df)
