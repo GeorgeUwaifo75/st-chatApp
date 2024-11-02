@@ -59,9 +59,9 @@ svec = np.array(vec).reshape(1,-1)
 st.write("Svec:",svec.shape)
 
 distances, I = index.search(svec, k=2)
-st.write("I:",I[0])
+st.write("I val:",I[0])
 
-st.write("Loc value:", df.iloc[I[0]])
+st.write("Loc value is:", df.iloc[I[0]])
 
 
 #st.write("Loc value:", df[I[0]])
