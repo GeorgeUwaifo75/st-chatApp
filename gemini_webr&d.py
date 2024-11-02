@@ -13,13 +13,13 @@ loader = UnstructuredURLLoader(
 )
 data = loader.load()
 
-text = data[0]
-st.write(text)
+text = data[0].page_content
+#st.write(text)
 
 text_splitter = CharacterTextSplitter(
         separator = "\n",
-        chunk_size = 1000,
-        chunk_overlap = 200,
+        chunk_size = 200,
+        chunk_overlap = 0,
         length_function = len
     )
 chunks = text_splitter.split_text(text)
