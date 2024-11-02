@@ -1,9 +1,11 @@
 import streamlit as st
 import pandas as pd
+import faiss
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import UnstructuredURLLoader
 #from langchain.text_splitter import CharacterTextSplitter
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from sentence_transformers import SentenceTransformer
 
 st.title("URL load and Analyzer")
 loader = UnstructuredURLLoader(
@@ -37,9 +39,22 @@ df = pd.read_csv("salaries.csv")
 st.write(df.shape)
 
 st.text(df.head())
-from sentence_transformers import SentenceTransformer
+
 encoder = SentenceTransformer("all-mpnet-base-v2") 
 vectors = encoder.encode(df.company_location)
  
 dim = vectors.shape[1]
 st.write(dim)
+
+index = faiss.IndexFlatL2(dim)
+index.add(vectors)
+
+search_query = "Show me some company locations starting with the letter B"
+vec = encoder.encode(search_query)
+st.text("vec:",vec.shape)
+
+import numpy as np
+svec = np.array(vec).reshape:(1,-1)
+st.text("svec:",svec.shape)
+
+index.search(svec, k=2)
