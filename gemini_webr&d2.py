@@ -26,7 +26,7 @@ def get_web_text():
     data = loader.load()
 
     #text = data[0].page_content
-    for i in len(data):
+    for i in range(len(data)):
         text += data[i].page_content
 
     return text
