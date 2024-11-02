@@ -41,7 +41,7 @@ st.write(df.shape)
 st.text(df.head())
 
 encoder = SentenceTransformer("all-mpnet-base-v2") 
-vectors = encoder.encode(df.company_location)
+vectors = encoder.encode(df.job_title)
  
 dim = vectors.shape[1]
 st.write(dim)
@@ -49,7 +49,7 @@ st.write(dim)
 index = faiss.IndexFlatL2(dim)
 index.add(vectors)
 
-search_query = "Show me some company locations starting with the letter B"
+search_query = "Show me some Jobs starting with the letter B"
 vec = encoder.encode(search_query)
 #st.write("Vec:",vec.shape)
 
