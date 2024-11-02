@@ -9,3 +9,5 @@ loader = UnstructuredURLLoader(
 
     ] 
 )
+data = loader.load()
+len(data)
