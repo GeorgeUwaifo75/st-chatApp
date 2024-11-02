@@ -13,8 +13,12 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
+urls = []
 
-
+#Handle URL Input
+def handle_urlinput(url_input):
+    urls.append(url_input)
+    
 # Processing URLs
 def get_web_text():
     text = ""
@@ -22,7 +26,6 @@ def get_web_text():
     urls = [
         "https://crypto.news/tag/meme-coin/",
         "https://bravenewcoin.com/insights/cardano-and-ethereum-whales-betting-big-on-hot-new-popular-meme-coin-cutoshi-after-its-listing-on-cmc"
-
         ] 
     )
     data = loader.load()
@@ -91,6 +94,13 @@ def main():
     with st.sidebar:
         st.subheader("Your documents")
         #pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
+        
+
+        url_input = st.text_input("Source URL:")
+
+        if url_input:
+            handle_urlinput(url_input)
+
         if st.button("Process"):
             with st.spinner("Processing"):
                 raw_text = get_web_text()
