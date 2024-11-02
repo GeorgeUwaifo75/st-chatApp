@@ -1,6 +1,7 @@
 import streamlit as st
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import UnstructuredURLLoader
+from langchain.text_splitter import CharacterTextSplitter
 
 st.title("URL load and Analyzer")
 loader = UnstructuredURLLoader(
@@ -11,4 +12,9 @@ loader = UnstructuredURLLoader(
     ] 
 )
 data = loader.load()
+textSplitter = CharacterTextSplitter(
+    
+)
+
+
 st.write(data[0].metadata)
