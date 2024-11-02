@@ -13,13 +13,20 @@ from langchain.chains import ConversationalRetrievalChain
 
 
 
-# Processing pdfs
-def get_pdf_text(pdf_docs):
+# Processing URLs
+def get_web_text():
     text = ""
-    for pdf in pdf_docs:
-        pdf_reader = PdfReader(pdf)
-        for page in pdf_reader.pages:
-            text += page.extract_text()
+    loader = UnstructuredURLLoader(
+    urls = [
+        "https://www.moneycontrol.com/news/india/two-women-die-6-taken-ill-after-consuming-mango-kernel-gruel-in-odisha-12856689.html",
+        "https://www.nimbleway.com/blog/use-serp-api-to-boost-rankings-and-explore-markets"
+
+        ] 
+    )
+    data = loader.load()
+
+    text = data[0].page_content
+
     return text
 
 
@@ -70,7 +77,7 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Chat with multiple PDFs :books:")
+    st.header("Chat with multiple URLs :links:")
 
     user_question = st.text_input("Ask a question about your documents:")
 
@@ -79,10 +86,10 @@ def main():
 
     with st.sidebar:
         st.subheader("Your documents")
-        pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
+        #pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
         if st.button("Process"):
             with st.spinner("Processing"):
-                raw_text = get_pdf_text(pdf_docs)
+                raw_text = get_web_text()
 
                 #convert to chunks
                 text_chunks = get_text_chunks(raw_text)
