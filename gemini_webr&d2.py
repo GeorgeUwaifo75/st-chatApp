@@ -13,7 +13,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
-urls = []
+
 
 
 #Handle URL Input
@@ -82,6 +82,8 @@ def get_conversation_chain(vectorstore):
 
 def main():
     load_dotenv()
+    urls = []
+    
     st.set_page_config(page_title="Chat with multiple pdfs", page_icon=":books:")
 
     if "conversation" not in st.session_state:
