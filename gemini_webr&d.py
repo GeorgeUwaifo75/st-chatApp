@@ -1,7 +1,8 @@
 import streamlit as st
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import UnstructuredURLLoader
-from langchain.text_splitter import CharacterTextSplitter
+#from langchain.text_splitter import CharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 st.title("URL load and Analyzer")
 loader = UnstructuredURLLoader(
@@ -16,8 +17,9 @@ data = loader.load()
 text = data[0].page_content
 #st.write(text)
 
-text_splitter = CharacterTextSplitter(
-        separator = "\n",
+#text_splitter = CharacterTextSplitter(
+text_splitter = RecursiveCharacterTextSplitter(    
+        separator = ["\n\n", "\n", " "],
         chunk_size = 200,
         chunk_overlap = 0,
         length_function = len
