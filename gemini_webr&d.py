@@ -19,6 +19,7 @@ loader = UnstructuredURLLoader(
 data = loader.load()
 
 text = data[0].page_content
+
 #st.write(text)
 
 #text_splitter = CharacterTextSplitter(
