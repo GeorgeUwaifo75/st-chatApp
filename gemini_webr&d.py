@@ -18,8 +18,10 @@ text = data[0].page_content
 #st.write(text)
 
 #text_splitter = CharacterTextSplitter(
-text_splitter = RecursiveCharacterTextSplitter(    
+text_splitter = RecursiveCharacterTextSplitter(  
+# The Separator below is for the Recursive format   
         separators = ["\n\n", "\n", " "],
+        #separator = ["\n"],
         chunk_size = 200,
         chunk_overlap = 0,
         length_function = len
