@@ -36,4 +36,4 @@ pd.set_option('display.max_colwidth',100)
 df = pd.read_csv("salaries.csv")
 st.write(df.shape)
 
-st.write(df.head())
+#st.write(df.head())
