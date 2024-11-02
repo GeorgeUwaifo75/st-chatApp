@@ -7,4 +7,3 @@ langchain-google-genai
 faiss-cpu
 unstructured
 sentence-transformers
-pandas >= 0.23
