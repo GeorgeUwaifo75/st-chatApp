@@ -36,8 +36,8 @@ def get_web_text():
 
 # Splitting text into small chunks to create embeddings
 def get_text_chunks(text):
-    text_splitter = CharacterTextSplitter(
-        separator = "\n",
+    text_splitter = RecursiveCharacterTextSplitter(
+        separators = ["\n\n", "\n", " "],
         chunk_size = 1000,
         chunk_overlap = 200,
         length_function = len
