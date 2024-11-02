@@ -19,7 +19,7 @@ urls = []
 #Handle URL Input
 def handle_urlinput(url_input):
     urls.append(url_input)
-    st.write("URL Appended:",urls)
+    st.text("URL Appended.")
     
     
 # Processing URLs
