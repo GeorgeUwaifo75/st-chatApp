@@ -51,10 +51,10 @@ index.add(vectors)
 
 search_query = "Show me some company locations starting with the letter B"
 vec = encoder.encode(search_query)
-st.text("vec:",vec.shape)
+st.text("Vec:",vec.shape)
 
 import numpy as np
 svec = np.array(vec).reshape(1,-1)
-st.text("svec:",svec.shape)
+st.text("Svec:",svec.shape)
 
 index.search(svec, k=2)
