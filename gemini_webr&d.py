@@ -25,3 +25,5 @@ text_splitter = CharacterTextSplitter(
 chunks = text_splitter.split_text(text)
    
 st.write(len(chunks))
+for chunk in chunks:
+    print(len(chunk))
