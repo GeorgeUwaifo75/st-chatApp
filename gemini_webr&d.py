@@ -19,7 +19,7 @@ text = data[0].page_content
 
 #text_splitter = CharacterTextSplitter(
 text_splitter = RecursiveCharacterTextSplitter(    
-        separator = ["\n\n", "\n", " "],
+        separators = ["\n\n", "\n", " "],
         chunk_size = 200,
         chunk_overlap = 0,
         length_function = len
