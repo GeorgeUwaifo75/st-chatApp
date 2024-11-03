@@ -32,7 +32,7 @@ def upload_ivieAi():
 
     # Extract the first "reply" values from each item in "allpushdata"
     # replies = []
-    global text2 = ""
+    text2 = ""
     for item in data["allpushdata"]:
         first_reply = item["replies"][0]["reply"]
         #replies.append(first_reply)
