@@ -25,7 +25,7 @@ def handle_urlinput(url_input):
 # Processing URLs
 def get_web_text():
     text = ""
-    #main_placeholder.text("Processing...")
+    main_placeholder.text("Processing...")
     loader = UnstructuredURLLoader(
 
     urls     
