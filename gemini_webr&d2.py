@@ -23,7 +23,7 @@ json_data = response.content
 
 urls = []
 text2 = ""
-global type_v = 1
+type_v = 1
 
 #Upload IvieAI dataset
 def upload_ivieAi():
@@ -32,7 +32,7 @@ def upload_ivieAi():
 
     # Extract the first "reply" values from each item in "allpushdata"
     # replies = []
-    text2 = ""
+    global text2 = ""
     for item in data["allpushdata"]:
         first_reply = item["replies"][0]["reply"]
         #replies.append(first_reply)
