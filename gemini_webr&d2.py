@@ -1,4 +1,6 @@
 import streamlit as st
+import urllib.request
+import pandas as pd
 
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import UnstructuredURLLoader
@@ -16,6 +18,12 @@ from langchain.chains import ConversationalRetrievalChain
 
 urls = []
 
+#Upload IvieAI dataset
+def upload_ivieAi():
+    json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
+    response = requests.get(json_url)
+    json_data = response.content
+    
 #Handle URL Input
 def handle_urlinput(url_input):
     urls.append(url_input)
@@ -105,7 +113,7 @@ def main():
             
         
         if st.button("Load IvieAI"):
-            pass
+            upload_ivieAi()
 
         
         process_url = st.button("Process")
