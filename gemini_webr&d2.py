@@ -25,7 +25,7 @@ def handle_urlinput(url_input):
 # Processing URLs
 def get_web_text():
     text = ""
-    main_placeholder.text("Processing...")
+    #main_placeholder.text("Processing...")
     loader = UnstructuredURLLoader(
 
     urls     
@@ -41,7 +41,7 @@ def get_web_text():
 
 # Splitting text into small chunks to create embeddings
 def get_text_chunks(text):
-    main_placeholder.text("Splitting text...")
+   # main_placeholder.text("Splitting text...")
     text_splitter = RecursiveCharacterTextSplitter(
         separators = ["\n\n", "\n", " "],
         chunk_size = 1000,
@@ -82,7 +82,8 @@ def main():
     load_dotenv()
     
     st.set_page_config(page_title="Chat with multiple URLs", page_icon=":books:")
-    main_placeholder = st.empty()
+    
+    #main_placeholder = st.empty()
     
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
