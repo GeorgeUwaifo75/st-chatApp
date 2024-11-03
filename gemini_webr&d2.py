@@ -86,7 +86,7 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Chat with multiple URLs :links:")
+    st.header("Research with multiple URLs :links:")
 
     user_question = st.text_input("Ask a question about your documents:")
 
@@ -94,7 +94,7 @@ def main():
         handle_userinput(user_question)
 
     with st.sidebar:
-        st.subheader("URL Sources")
+        st.subheader("URL Sources...")
 
         for i in range(2):
             url_input = st.sidebar.text_input(f"Source URL{i+1}:")
