@@ -17,6 +17,7 @@ from langchain.chains import ConversationalRetrievalChain
 
 
 urls = []
+text2 = ""
 
 #Upload IvieAI dataset
 def upload_ivieAi():
@@ -28,12 +29,12 @@ def upload_ivieAi():
     data = json.loads(json_data)
 
     # Extract the first "reply" values from each item in "allpushdata"
-    text = ""
+    text2 = ""
     replies = []
     for item in data["allpushdata"]:
         first_reply = item["replies"][0]["reply"]
         replies.append(first_reply)
-        text += first_reply + "\n"
+        text2 += first_reply + "\n"
 
 #Handle URL Input
 def handle_urlinput(url_input):
@@ -54,7 +55,11 @@ def get_web_text():
     #text = data[0].page_content
     for i in range(len(data)):
         text += data[i].page_content
-
+        
+    #Check if IvieAI is the task
+    if len(text2)>0:
+        text = text2
+        
     return text
 
 
