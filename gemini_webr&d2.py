@@ -23,7 +23,18 @@ def upload_ivieAi():
     json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
     response = requests.get(json_url)
     json_data = response.content
-    
+   
+    # Load the JSON data into a Python dictionary
+    data = json.loads(json_data)
+
+    # Extract the first "reply" values from each item in "allpushdata"
+    text = ""
+    replies = []
+    for item in data["allpushdata"]:
+        first_reply = item["replies"][0]["reply"]
+        replies.append(first_reply)
+        text += first_reply + "\n"
+
 #Handle URL Input
 def handle_urlinput(url_input):
     urls.append(url_input)
@@ -118,7 +129,7 @@ def main():
         
         process_url = st.button("Process")
         
-        #if st.button("Process"):
+        #if st.button("Process URL(s)"):
         if process_url:    
             with st.spinner("Processing"):
                 raw_text = get_web_text()
