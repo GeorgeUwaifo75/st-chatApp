@@ -83,7 +83,6 @@ def main():
     
     st.set_page_config(page_title="Chat with multiple URLs", page_icon=":books:")
     
-    #main_placeholder = st.empty()
     
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
@@ -134,3 +133,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    main_placeholder = st.empty()
