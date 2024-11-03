@@ -23,6 +23,7 @@ json_data = response.content
 
 urls = []
 text2 = ""
+type_v = 1
 
 #Upload IvieAI dataset
 def upload_ivieAi():
@@ -133,15 +134,20 @@ def main():
         proc_ivieai = st.button("Load IvieAI")
         if proc_ivieai:
             text2 = upload_ivieAi()
-            #st.write("T1:",text2[:100])
+            st.write("T1:",text2[:100])
+            type_v = 2
 
         
         process_url = st.button("Process URL(s)")
         
         if process_url:    
             with st.spinner("Processing"):
-                st.write("T2:",text2[:100])
-                raw_text = get_web_text()
+                #st.write("T2:",text2[:100])
+                if type_v==1:
+                    raw_text = get_web_text()
+                 elif type_v==2:  
+                    raw_text = text2
+
                 
                 #convert to chunks
                 text_chunks = get_text_chunks(raw_text)
