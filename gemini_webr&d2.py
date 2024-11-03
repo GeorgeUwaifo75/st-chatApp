@@ -104,14 +104,10 @@ def main():
             handle_urlinput(url_input)
             
         
-        #url_input = st.text_input("Source URL:")
-        #if url_input:
-        #    handle_urlinput(url_input)
+        if st.button("Load IvieAI"):
+            pass
 
-        #url_input2 = st.text_input("Source URL2:")
-        #if url_input2:
-        #    handle_urlinput(url_input2)
-
+        
         process_url = st.button("Process")
         
         #if st.button("Process"):
