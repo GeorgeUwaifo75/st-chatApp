@@ -127,9 +127,8 @@ def main():
             upload_ivieAi()
 
         
-        process_url = st.button("Process")
+        process_url = st.button("Process URL(s)")
         
-        #if st.button("Process URL(s)"):
         if process_url:    
             with st.spinner("Processing"):
                 raw_text = get_web_text()
