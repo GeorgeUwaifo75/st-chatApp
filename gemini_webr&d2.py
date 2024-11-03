@@ -1,4 +1,5 @@
 import streamlit as st
+import requests
 import urllib.request
 import pandas as pd
 
@@ -15,15 +16,16 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
+json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
+response = requests.get(json_url)
+json_data = response.content
 
 urls = []
 text2 = ""
 
 #Upload IvieAI dataset
 def upload_ivieAi():
-    json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
-    response = requests.get(json_url)
-    json_data = response.content
+    
    
     # Load the JSON data into a Python dictionary
     data = json.loads(json_data)
