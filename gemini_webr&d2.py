@@ -25,17 +25,14 @@ text2 = ""
 
 #Upload IvieAI dataset
 def upload_ivieAi():
-    
-   
     # Load the JSON data into a Python dictionary
     data = json.loads(json_data)
 
     # Extract the first "reply" values from each item in "allpushdata"
-    text2 = ""
-    replies = []
+    # replies = []
     for item in data["allpushdata"]:
         first_reply = item["replies"][0]["reply"]
-        replies.append(first_reply)
+        #replies.append(first_reply)
         text2 += first_reply + "\n"
 
 #Handle URL Input
@@ -129,8 +126,8 @@ def main():
             url_input = st.sidebar.text_input(f"Source URL{i+1}:")
             handle_urlinput(url_input)
             
-        
-        if st.button("Load IvieAI"):
+        proc_ivieai = st.button("Load IvieAI")
+        if proc_ivieai:
             upload_ivieAi()
 
         
