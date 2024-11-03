@@ -28,10 +28,6 @@ def get_web_text():
     loader = UnstructuredURLLoader(
 
     urls     
-    #urls = [
-    #    "https://crypto.news/tag/meme-coin/",
-    #    "https://bravenewcoin.com/insights/cardano-and-ethereum-whales-betting-big-on-hot-new-popular-meme-coin-cutoshi-after-its-listing-on-cmc"
-    #    ] 
     )
     data = loader.load()
 
@@ -83,7 +79,7 @@ def get_conversation_chain(vectorstore):
 def main():
     load_dotenv()
     
-    st.set_page_config(page_title="Chat with multiple pdfs", page_icon=":books:")
+    st.set_page_config(page_title="Chat with multiple URLs", page_icon=":books:")
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
@@ -98,20 +94,25 @@ def main():
         handle_userinput(user_question)
 
     with st.sidebar:
-        st.subheader("Your documents")
-        #pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
-        
+        st.subheader("URL Sources")
 
-        url_input = st.text_input("Source URL:")
-        if url_input:
+        for i in range(2):
+            url_input = st.sidebar.text_input(f"Source URL{i+1}:")
             handle_urlinput(url_input)
+            
+        
+        #url_input = st.text_input("Source URL:")
+        #if url_input:
+        #    handle_urlinput(url_input)
 
-        url_input2 = st.text_input("Source URL2:")
-        if url_input2:
-            handle_urlinput(url_input2)
+        #url_input2 = st.text_input("Source URL2:")
+        #if url_input2:
+        #    handle_urlinput(url_input2)
 
-
-        if st.button("Process"):
+        process_url = st.button("Process")
+        
+        #if st.button("Process"):
+        if process_url:    
             with st.spinner("Processing"):
                 raw_text = get_web_text()
 
