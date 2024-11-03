@@ -19,7 +19,7 @@ urls = []
 #Handle URL Input
 def handle_urlinput(url_input):
     urls.append(url_input)
-    st.text("URL Appended.")
+    #st.text("URL Appended.")
     
     
 # Processing URLs
@@ -79,7 +79,7 @@ def get_conversation_chain(vectorstore):
 def main():
     load_dotenv()
     
-    st.set_page_config(page_title="Chat with multiple URLs", page_icon=":books:")
+    st.set_page_config(page_title="Chat with multiple URLs", page_icon=":research:")
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
@@ -96,7 +96,7 @@ def main():
     with st.sidebar:
         st.subheader("URL Sources...")
 
-        for i in range(2):
+        for i in range(3):
             url_input = st.sidebar.text_input(f"Source URL{i+1}:")
             handle_urlinput(url_input)
             
