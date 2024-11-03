@@ -36,7 +36,8 @@ def upload_ivieAi():
         first_reply = item["replies"][0]["reply"]
         #replies.append(first_reply)
         text2 += first_reply + "\n"
-    st.write(text2[:100])
+    
+    return text2
 
 #Handle URL Input
 def handle_urlinput(url_input):
@@ -53,8 +54,7 @@ def get_web_text():
     urls     
     )
     data = loader.load()
-
-    #text = data[0].page_content
+    
     for i in range(len(data)):
         text += data[i].page_content
         
@@ -131,7 +131,8 @@ def main():
             
         proc_ivieai = st.button("Load IvieAI")
         if proc_ivieai:
-            upload_ivieAi()
+            text2 = upload_ivieAi()
+            st.write("T1:",text2[:100])
 
         
         process_url = st.button("Process URL(s)")
@@ -139,6 +140,7 @@ def main():
         if process_url:    
             with st.spinner("Processing"):
                 raw_text = get_web_text()
+                st.write("T2:",text2[:100])
 
                 #convert to chunks
                 text_chunks = get_text_chunks(raw_text)
