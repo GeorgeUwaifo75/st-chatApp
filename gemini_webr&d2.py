@@ -59,8 +59,8 @@ def get_web_text():
         text += data[i].page_content
         
     #Check if IvieAI is the task
-    if len(text2)>0:
-        text = text2
+    #if len(text2)>0:
+    #    text = text2
         
     return text
 
@@ -140,7 +140,7 @@ def main():
         if process_url:    
             with st.spinner("Processing"):
                 raw_text = get_web_text()
-                st.write("T2:",text2[:100])
+                #st.write("T2:",text2[:100])
 
                 #convert to chunks
                 text_chunks = get_text_chunks(raw_text)
