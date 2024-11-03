@@ -13,7 +13,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
-
+main_placeholder = st.empty()
 urls = []
 
 #Handle URL Input
@@ -25,6 +25,7 @@ def handle_urlinput(url_input):
 # Processing URLs
 def get_web_text():
     text = ""
+    main_placeholder.text("Processing...")
     loader = UnstructuredURLLoader(
 
     urls     
@@ -40,6 +41,7 @@ def get_web_text():
 
 # Splitting text into small chunks to create embeddings
 def get_text_chunks(text):
+    main_placeholder.text("Splitting text...")
     text_splitter = RecursiveCharacterTextSplitter(
         separators = ["\n\n", "\n", " "],
         chunk_size = 1000,
