@@ -47,7 +47,7 @@ def handle_urlinput(url_input):
     
 # Processing URLs
 def get_web_text():
-    st.write("T2:",text2[:100])
+    
     text = ""
     #main_placeholder.text("Processing...")
     loader = UnstructuredURLLoader(
@@ -140,9 +140,9 @@ def main():
         
         if process_url:    
             with st.spinner("Processing"):
+                st.write("T2:",text2[:100])
                 raw_text = get_web_text()
                 
-
                 #convert to chunks
                 text_chunks = get_text_chunks(raw_text)
                 st.write(text_chunks)
