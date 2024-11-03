@@ -47,6 +47,7 @@ def handle_urlinput(url_input):
     
 # Processing URLs
 def get_web_text():
+    st.write("T2:",text2[:100])
     text = ""
     #main_placeholder.text("Processing...")
     loader = UnstructuredURLLoader(
@@ -132,7 +133,7 @@ def main():
         proc_ivieai = st.button("Load IvieAI")
         if proc_ivieai:
             text2 = upload_ivieAi()
-            st.write("T1:",text2[:100])
+            #st.write("T1:",text2[:100])
 
         
         process_url = st.button("Process URL(s)")
@@ -140,7 +141,7 @@ def main():
         if process_url:    
             with st.spinner("Processing"):
                 raw_text = get_web_text()
-                #st.write("T2:",text2[:100])
+                
 
                 #convert to chunks
                 text_chunks = get_text_chunks(raw_text)
