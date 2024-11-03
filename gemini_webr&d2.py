@@ -69,7 +69,7 @@ def get_web_text():
 def get_text_chunks(text):
    # main_placeholder.text("Splitting text...")
     text_splitter = RecursiveCharacterTextSplitter(
-        separators = ["\n\n", "\n", " "],
+        separators = ["\n\n", "\n", " ", ".", "?"],
         chunk_size = 1000,
         chunk_overlap = 200,
         length_function = len
