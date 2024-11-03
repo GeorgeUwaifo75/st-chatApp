@@ -13,7 +13,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
-main_placeholder = st.empty()
+
 urls = []
 
 #Handle URL Input
@@ -82,7 +82,8 @@ def main():
     load_dotenv()
     
     st.set_page_config(page_title="Chat with multiple URLs", page_icon=":books:")
-
+    main_placeholder = st.empty()
+    
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
