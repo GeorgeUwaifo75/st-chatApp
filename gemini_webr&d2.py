@@ -31,10 +31,12 @@ def upload_ivieAi():
 
     # Extract the first "reply" values from each item in "allpushdata"
     # replies = []
+    text2 = ""
     for item in data["allpushdata"]:
         first_reply = item["replies"][0]["reply"]
         #replies.append(first_reply)
         text2 += first_reply + "\n"
+    st.write(text2[:100])
 
 #Handle URL Input
 def handle_urlinput(url_input):
