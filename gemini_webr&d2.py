@@ -79,7 +79,7 @@ def get_conversation_chain(vectorstore):
 def main():
     load_dotenv()
     
-    st.set_page_config(page_title="Chat with multiple URLs", page_icon=":research:")
+    st.set_page_config(page_title="Chat with multiple URLs", page_icon=":books:")
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
