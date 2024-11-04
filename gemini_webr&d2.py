@@ -152,23 +152,23 @@ def main():
         for i in range(3):
             url_input = st.sidebar.text_input(f"Source URL{i+1}:")
             handle_urlinput(url_input)
-        """
-        proc_ivieai = st.button("Load IvieAI")
-        if proc_ivieai:
-            with st.spinner("Processing"):
-                raw_text = get_web_text(2)
+        
+       # proc_ivieai = st.button("Load IvieAI")
+       # if proc_ivieai:
+       #     with st.spinner("Processing"):
+        #        raw_text = get_web_text(2)
                 
-                #convert to chunks
-                text_chunks = get_text_chunks(raw_text)
-                st.write(text_chunks)
+        #        #convert to chunks
+        #        text_chunks = get_text_chunks(raw_text)
+        #        st.write(text_chunks)
 
                 #embeddings
-                vectorstore = get_vectorstore(text_chunks)
+        #        vectorstore = get_vectorstore(text_chunks)
 
 
                 #create conversation chain
-                st.session_state.conversation = get_conversation_chain(vectorstore)
-       """
+        #        st.session_state.conversation = get_conversation_chain(vectorstore)
+       
           
         
         process_url = st.button("Process URL(s)")
