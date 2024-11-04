@@ -152,7 +152,7 @@ def main():
         for i in range(3):
             url_input = st.sidebar.text_input(f"Source URL{i+1}:")
             handle_urlinput(url_input)
-            
+        """
         proc_ivieai = st.button("Load IvieAI")
         if proc_ivieai:
             with st.spinner("Processing"):
@@ -168,7 +168,7 @@ def main():
 
                 #create conversation chain
                 st.session_state.conversation = get_conversation_chain(vectorstore)
-    
+       """
           
         
         process_url = st.button("Process URL(s)")
