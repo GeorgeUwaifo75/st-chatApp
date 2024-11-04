@@ -1,7 +1,7 @@
 import streamlit as st
-import requests
-import json
-import urllib.request
+#import requests
+#import json
+#import urllib.request
 import pandas as pd
 
 from langchain.document_loaders import TextLoader
@@ -17,26 +17,26 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
-json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
-response = requests.get(json_url)
-json_data = response.content
+#json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
+#response = requests.get(json_url)
+#json_data = response.content
 
 urls = []
 
 #Upload IvieAI dataset
-def upload_ivieAi():
+#def upload_ivieAi():
     # Load the JSON data into a Python dictionary
-    data = json.loads(json_data)
+#    data = json.loads(json_data)
 
     # Extract the first "reply" values from each item in "allpushdata"
     # replies = []
-    text2 = ""
-    for item in data["allpushdata"]:
-        first_reply = item["replies"][0]["reply"]
+#   text2 = ""
+#    for item in data["allpushdata"]:
+#        first_reply = item["replies"][0]["reply"]
         #replies.append(first_reply)
-        text2 += first_reply + "\n"
+#        text2 += first_reply + "\n"
     
-    return text2
+#    return text2
 
 #Handle URL Input
 def handle_urlinput(url_input):
@@ -45,7 +45,7 @@ def handle_urlinput(url_input):
     
     
 # Processing URLs
-def get_web_text(val):
+def get_web_text2(val):
     text = ""
     #main_placeholder.text("Processing...")
     loader = UnstructuredURLLoader(
@@ -70,7 +70,7 @@ def get_web_text(val):
         
     return text
 
-def get_web_text2():
+def get_web_text():
     
     text = ""
     #main_placeholder.text("Processing...")
@@ -175,8 +175,8 @@ def main():
         
         if process_url:    
             with st.spinner("Processing"):
-                raw_text = get_web_text(1)
-                
+                #raw_text = get_web_text(1)
+                raw_text = get_web_text()
                 #convert to chunks
                 text_chunks = get_text_chunks(raw_text)
                 st.write(text_chunks)
