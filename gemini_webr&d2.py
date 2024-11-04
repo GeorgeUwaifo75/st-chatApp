@@ -143,9 +143,9 @@ def main():
         if process_url:    
             with st.spinner("Processing"):
                 st.write("T2:",text2[:100])
-                if type_v =1:
+                if type_v ==1:
                     raw_text = get_web_text()
-                elif type_v=2:  
+                elif type_v==2:  
                     raw_text = text2
 
                 
