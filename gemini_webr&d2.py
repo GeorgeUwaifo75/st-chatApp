@@ -135,7 +135,7 @@ def main():
         if proc_ivieai:
             text2 = upload_ivieAi()
             st.write("T1:",text2[:100])
-            global type_v = 2
+            type_v = 2
 
         
         process_url = st.button("Process URL(s)")
