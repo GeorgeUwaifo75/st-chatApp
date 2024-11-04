@@ -45,7 +45,32 @@ def handle_urlinput(url_input):
     
     
 # Processing URLs
-def get_web_text():
+def get_web_text(val):
+    text = ""
+    #main_placeholder.text("Processing...")
+    loader = UnstructuredURLLoader(
+
+    urls     
+    )
+    data = loader.load()
+
+    if val ==1:
+        for i in range(len(data)):
+            text += data[i].page_content
+    else:
+       # Load the JSON data into a Python dictionary
+        data = json.loads(json_data)
+
+        # Extract the first "reply" values from each item in "allpushdata"
+        
+        for item in data["allpushdata"]:
+            first_reply = item["replies"][0]["reply"]
+            text += first_reply + "\n"
+     
+        
+    return text
+
+def get_web_text2():
     
     text = ""
     #main_placeholder.text("Processing...")
@@ -58,9 +83,6 @@ def get_web_text():
     for i in range(len(data)):
         text += data[i].page_content
         
-    #Check if IvieAI is the task
-    #if len(text2)>0:
-    #    text = text2
         
     return text
 
@@ -69,7 +91,7 @@ def get_web_text():
 def get_text_chunks(text):
    # main_placeholder.text("Splitting text...")
     text_splitter = RecursiveCharacterTextSplitter(
-        separators = ["\n\n", "\n", " ", ".", "?"],
+        separators = ["\n\n", "\n", " "],
         chunk_size = 1000,
         chunk_overlap = 200,
         length_function = len
@@ -106,8 +128,8 @@ def get_conversation_chain(vectorstore):
 
 def main():
     load_dotenv()
-    type_v = 1 
-    text2 = ""
+    #type_v = 1 
+    #text2 = ""
 
     st.set_page_config(page_title="Chat with multiple URLs", page_icon=":books:")
     
@@ -133,21 +155,27 @@ def main():
             
         proc_ivieai = st.button("Load IvieAI")
         if proc_ivieai:
-            text2 = upload_ivieAi()
-            st.write("T1:",text2[:100])
-            type_v = 2
+            with st.spinner("Processing"):
+                raw_text = get_web_text(2)
+                
+                #convert to chunks
+                text_chunks = get_text_chunks(raw_text)
+                st.write(text_chunks)
 
+                #embeddings
+                vectorstore = get_vectorstore(text_chunks)
+
+
+                #create conversation chain
+                st.session_state.conversation = get_conversation_chain(vectorstore)
+    
+          
         
         process_url = st.button("Process URL(s)")
         
         if process_url:    
             with st.spinner("Processing"):
-                st.write("T2:",text2[:100])
-                if type_v ==1:
-                    raw_text = get_web_text()
-                elif type_v==2:  
-                    raw_text = text2
-
+                raw_text = get_web_text(1)
                 
                 #convert to chunks
                 text_chunks = get_text_chunks(raw_text)
