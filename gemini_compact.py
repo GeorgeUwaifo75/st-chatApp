@@ -96,7 +96,7 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Research with multiple URLs :links:")
+    st.header("GiTeksol Document Assistant (GDA)")
 
     user_question = st.text_input("Ask a question about your documents:")
 
