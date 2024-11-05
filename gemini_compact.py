@@ -100,17 +100,27 @@ def main():
     st.sidebar .title("Source of Doc.")
     doc_type = st.sidebar.selectbox("Pick Doc Source", ("URL", "PDF", "Text"))
 
-    if doc_type == "URL":
+"""
+ st.subheader("Your documents")
+        pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
+        if st.button("Process"):
+            with st.spinner("Processing"):
+                raw_text = get_pdf_text(pdf_docs)
+
+"""
+
+    
+    if doc_type == "URL" or doc_type == "PDF":
         with st.sidebar:
                 st.subheader("URL Sources...")
-
-                for i in range(3):
-                    url_input = st.sidebar.text_input(f"Source URL{i+1}:")
-                    handle_urlinput(url_input)
+                if doc_type == "URL": 
+                    for i in range(3):
+                        url_input = st.sidebar.text_input(f"Source URL{i+1}:")
+                        handle_urlinput(url_input)
+                    
         
-        
-                process_url = st.button("Process URL(s)")
-        
+                #process_url = st.button("Process URL(s)")
+                process_url = st.button("Process Docs")
                 if process_url:    
                     with st.spinner("Processing"):
                             raw_text = get_web_text()
