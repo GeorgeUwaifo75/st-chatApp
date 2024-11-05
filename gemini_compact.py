@@ -17,6 +17,8 @@ urls = []
 
 
 #Handle URL Input
+def handle_urlinput(url_input):
+    urls.append(url_input)
 
 def get_web_text():
     
