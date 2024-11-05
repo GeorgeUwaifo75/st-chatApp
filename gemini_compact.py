@@ -115,7 +115,12 @@ def main():
                 process_url = st.button("Process Docs")
                 if process_url:    
                     with st.spinner("Processing"):
-                            raw_text = get_web_text()
+                            
+                            if doc_type == "URL":
+                                raw_text = get_web_text()
+                            elif doc_type == "PDF":
+                                raw_text = get_web_text()
+                                
                             #convert to chunks
                             text_chunks = get_text_chunks(raw_text)
                             st.write(text_chunks)
