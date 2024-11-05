@@ -94,28 +94,39 @@ def main():
     if user_question:
         handle_userinput(user_question)
 
-    with st.sidebar:
-        st.subheader("URL Sources...")
+    
+    st.sidebar .title("Source of Doc.")
+    doc_type = st.sidebar.selectbox("Pick Doc Source", ("URL", "PDF", "Text"))
 
-        for i in range(3):
-            url_input = st.sidebar.text_input(f"Source URL{i+1}:")
-            handle_urlinput(url_input)
+
+    if doc_type:
+        if doc_type == "URL":
+            with st.sidebar:
+                st.subheader("URL Sources...")
+
+                for i in range(3):
+                    url_input = st.sidebar.text_input(f"Source URL{i+1}:")
+                    handle_urlinput(url_input)
         
         
-        process_url = st.button("Process URL(s)")
+                    process_url = st.button("Process URL(s)")
         
-        if process_url:    
-            with st.spinner("Processing"):
-                raw_text = get_web_text()
-                #convert to chunks
-                text_chunks = get_text_chunks(raw_text)
-                st.write(text_chunks)
+                    if process_url:    
+                    with st.spinner("Processing"):
+                        raw_text = get_web_text()
+                        #convert to chunks
+                        text_chunks = get_text_chunks(raw_text)
+                        st.write(text_chunks)
 
-                #embeddings
-                vectorstore = get_vectorstore(text_chunks)
+                        #embeddings
+                        vectorstore = get_vectorstore(text_chunks)
 
-                #create conversation chain
-                st.session_state.conversation = get_conversation_chain(vectorstore)
+                        #create conversation chain
+                        st.session_state.conversation = get_conversation_chain(vectorstore)
+    
+    
+    
+    
     
 
 if __name__ == '__main__':
