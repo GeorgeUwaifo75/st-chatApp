@@ -20,6 +20,15 @@ urls = []
 def handle_urlinput(url_input):
     urls.append(url_input)
 
+# Processing pdfs
+def get_pdf_text(pdf_docs):
+    text = ""
+    for pdf in pdf_docs:
+        pdf_reader = PdfReader(pdf)
+        for page in pdf_reader.pages:
+            text += page.extract_text()
+    return text
+    
 def get_web_text():
     
     text = ""
@@ -120,7 +129,7 @@ def main():
                             if doc_type == "URL":
                                 raw_text = get_web_text()
                             elif doc_type == "PDF":
-                                raw_text = get_web_text()
+                                raw_text = get_pdf_text(pdf_docs)
                                 
                             #convert to chunks
                             text_chunks = get_text_chunks(raw_text)
