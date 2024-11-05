@@ -109,7 +109,8 @@ def main():
                     for i in range(3):
                         url_input = st.sidebar.text_input(f"Source URL{i+1}:")
                         handle_urlinput(url_input)
-                    
+                elif doc_type == "PDF":
+                       pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
         
                 #process_url = st.button("Process URL(s)")
                 process_url = st.button("Process Docs")
