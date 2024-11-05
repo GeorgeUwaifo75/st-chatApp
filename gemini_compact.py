@@ -100,7 +100,12 @@ def main():
     st.sidebar .title("Source of Doc.")
     doc_type = st.sidebar.selectbox("Pick Doc Source", ("URL", "PDF", "Text"))
 
-
+    if doc_type == "URL":
+        st.sidebar.write("URL")
+    elif doc_type == "PDF":
+        st.sidebar.write("PDF")
+    else:
+        st.sidebar.write("Text")
     
     
     
