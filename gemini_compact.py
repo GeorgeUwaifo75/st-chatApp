@@ -112,17 +112,17 @@ def main():
                     process_url = st.button("Process URL(s)")
         
                     if process_url:    
-                    with st.spinner("Processing"):
-                        raw_text = get_web_text()
-                        #convert to chunks
-                        text_chunks = get_text_chunks(raw_text)
-                        st.write(text_chunks)
+                        with st.spinner("Processing"):
+                            raw_text = get_web_text()
+                            #convert to chunks
+                            text_chunks = get_text_chunks(raw_text)
+                            st.write(text_chunks)
 
-                        #embeddings
-                        vectorstore = get_vectorstore(text_chunks)
+                            #embeddings
+                            vectorstore = get_vectorstore(text_chunks)
 
-                        #create conversation chain
-                        st.session_state.conversation = get_conversation_chain(vectorstore)
+                            #create conversation chain
+                            st.session_state.conversation = get_conversation_chain(vectorstore)
     
     
     
