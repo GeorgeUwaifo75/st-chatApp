@@ -104,7 +104,6 @@ def main():
         
         if process_url:    
             with st.spinner("Processing"):
-                #raw_text = get_web_text(1)
                 raw_text = get_web_text()
                 #convert to chunks
                 text_chunks = get_text_chunks(raw_text)
@@ -112,7 +111,6 @@ def main():
 
                 #embeddings
                 vectorstore = get_vectorstore(text_chunks)
-
 
                 #create conversation chain
                 st.session_state.conversation = get_conversation_chain(vectorstore)
