@@ -101,7 +101,6 @@ def main():
     doc_type = st.sidebar.selectbox("Pick Doc Source", ("URL", "PDF", "Text"))
 
     if doc_type == "URL":
-        st.sidebar.write("URL")
         with st.sidebar:
                 st.subheader("URL Sources...")
 
