@@ -102,6 +102,34 @@ def main():
 
     if doc_type == "URL":
         st.sidebar.write("URL")
+        with st.sidebar:
+                st.subheader("URL Sources...")
+
+                for i in range(3):
+                    url_input = st.sidebar.text_input(f"Source URL{i+1}:")
+                    handle_urlinput(url_input)
+        
+        
+                process_url = st.button("Process URL(s)")
+        
+                if process_url:    
+                    with st.spinner("Processing"):
+                            raw_text = get_web_text()
+                            #convert to chunks
+                            text_chunks = get_text_chunks(raw_text)
+                            st.write(text_chunks)
+
+                            #embeddings
+                            vectorstore = get_vectorstore(text_chunks)
+
+                            #create conversation chain
+                            st.session_state.conversation = get_conversation_chain(vectorstore)
+    
+    
+    
+
+
+    
     elif doc_type == "PDF":
         st.sidebar.write("PDF")
     else:
