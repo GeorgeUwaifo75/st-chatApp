@@ -97,20 +97,12 @@ def main():
         handle_userinput(user_question)
 
     
-    st.sidebar .title("Source of Doc.")
+    st.sidebar.title("Source of Doc.")
     doc_type = st.sidebar.selectbox("Pick Doc Source", ("URL", "PDF", "Text"))
 
-"""
- st.subheader("Your documents")
-        pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
-        if st.button("Process"):
-            with st.spinner("Processing"):
-                raw_text = get_pdf_text(pdf_docs)
-
-"""
 
     
-    if doc_type == "URL" or doc_type == "PDF":
+    if doc_type == "URL" or "PDF":
         with st.sidebar:
                 st.subheader("URL Sources...")
                 if doc_type == "URL": 
