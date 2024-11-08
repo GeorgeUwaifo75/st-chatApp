@@ -136,11 +136,11 @@ def main():
         background-color: #061E42 !important;
         background-image: none !important;
     }
-    [data-testid=stSidebar] {
+    .css-ecnl2d {
         background-image: none !important;
         color: #FFFFFF !important
     }
-    .css-ecnl2d {
+    [data-testid=stSidebar] {
         background-color: #496C9F !important;
         color: #496C9F !important
     }
