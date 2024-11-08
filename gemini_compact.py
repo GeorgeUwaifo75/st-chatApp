@@ -132,7 +132,7 @@ def main():
     st.markdown(
     """
     <style>
-    .css-nzvw1x {
+    [data-testid=stSidebar] {
         background-color: #061E42 !important;
         background-image: none !important;
     }
