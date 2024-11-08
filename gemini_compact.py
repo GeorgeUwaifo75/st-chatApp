@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+import requests
+import json
+import urllib.request
 
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import UnstructuredURLLoader
