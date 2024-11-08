@@ -132,16 +132,8 @@ def main():
     st.markdown(
     """
     <style>
-    .css-1aw8i8e {
-        background-color: #061E42 !important;
-        background-image: none !important;
-    }
-    .css-ecnl2d {
-        background-image: none !important;
-        color: #FFFFFF !important
-    }
     [data-testid=stSidebar] {
-        background-color: #496C9F !important;
+        background-color: #ff000050 !important;
         color: #496C9F !important
     }
     .css-15zws4i {
