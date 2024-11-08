@@ -13,7 +13,27 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
+
+json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
+response = requests.get(json_url)
+json_data = response.content
+
 urls = []
+
+#Upload IvieAI dataset
+def upload_ivieAi():
+    # Load the JSON data into a Python dictionary
+    data = json.loads(json_data)
+
+    # Extract the first "reply" values from each item in "allpushdata"
+    # replies = []
+    text = ""
+    for item in data["allpushdata"]:
+        first_reply = item["replies"][0]["reply"]
+        #replies.append(first_reply)
+        text += first_reply + "\n"
+    
+    return text
 
 
 #Handle URL Input
@@ -130,6 +150,9 @@ def main():
                                 raw_text = get_web_text()
                             elif doc_type == "PDF":
                                 raw_text = get_pdf_text(pdf_docs)
+                            elif doc_type == "Text":
+                                raw_text = upload_ivieAi()
+                                
                                 
                             #convert to chunks
                             text_chunks = get_text_chunks(raw_text)
