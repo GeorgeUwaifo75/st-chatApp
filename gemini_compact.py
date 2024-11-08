@@ -133,13 +133,10 @@ def main():
     """
     <style>
     [data-testid=stSidebar] {
-        background-color: #ff000050 !important;
-        color: #496C9F !important
-    }
-    .css-15zws4i {
-        background-color: #496C9F !important;
+        background-color: #ff012050 !important;
         color: #FFFFFF !important
     }
+   
     </style>
     """,
         unsafe_allow_html=True
