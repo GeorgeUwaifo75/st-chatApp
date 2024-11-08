@@ -133,8 +133,8 @@ def main():
     """
     <style>
     [data-testid=stSidebar] {
-        background-color: #ff012050 !important;
-        color: #FFFFFF !important
+        background-color: #ff011050 !important;
+        color: #496C9F !important
     }
    
     </style>
