@@ -130,7 +130,7 @@ def main():
 
     
     st.sidebar.title("Source of Doc.")
-    doc_type = st.sidebar.selectbox("Pick Doc Source", ("Doc Types","URL", "PDF", "Text"))
+    doc_type = st.sidebar.selectbox("Pick Doc Source", ("Doc Types","URL", "PDF", "IvieAI"))
 
 
     
@@ -153,7 +153,7 @@ def main():
                                 raw_text = get_web_text()
                             elif doc_type == "PDF":
                                 raw_text = get_pdf_text(pdf_docs)
-                            elif doc_type == "Text":
+                            elif doc_type == "IvieAI":
                                 raw_text = upload_ivieAi()
                                 
                                 
@@ -175,7 +175,7 @@ def main():
     elif doc_type == "PDF":
         st.sidebar.write("PDF")
     else:
-        st.sidebar.write("Text")
+        st.sidebar.write("IvieAI")
     
     
     
