@@ -95,6 +95,30 @@ def handle_userinput(question):
     st.session_state.chat_history = response['chat_history']
     st.write(response)  # Return only the answer from the response
 
+# Handling user questions #2
+def handle_userinput2(question):
+   # response = st.session_state.conversation({"question": question})
+   # st.session_state.chat_history = response['chat_history']
+
+# Append user question to history
+    st.session_state.chat_history.append({"role": "user", "content": question})
+    # Add user question
+    with st.chat_message("user"):
+        st.markdown(question)
+
+    # Answer the question
+#    answer, doc_source = generate_answer(user_question)
+#    with st.chat_message("assistant"):
+#        st.write(answer)
+    # Append assistant answer to history
+#    st.session_state.history.append({"role": "assistant", "content": answer})
+
+    # Append the document sources
+#    st.session_state.source.append({"question": user_question, "answer": answer, "document": doc_source})
+
+
+
+
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
     #llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro-latest')
@@ -130,23 +154,8 @@ def main():
 
     # Ask a question
     if user_question:
-        # Append user question to history
-        st.session_state.chat_history.append({"role": "user", "content": user_question})
-        # Add user question
-        with st.chat_message("user"):
-            st.markdown(user_question)
-    
-        # Answer the question
-        #answer, doc_source = rag_functions.generate_answer(user_question, token)
-        answer, doc_source = generate_answer(user_question)
-        with st.chat_message("assistant"):
-            st.write(answer)
-        # Append assistant answer to history
-        st.session_state.history.append({"role": "assistant", "content": answer})
-    
-        # Append the document sources
-        st.session_state.source.append({"question": user_question, "answer": answer, "document": doc_source})
-
+        handle_userinput2(user_question)
+        
 
 
 def generate_answer(question):
