@@ -113,7 +113,7 @@ def handle_userinput2(question):
    
  
 # Append user question to history
-    st.session_state.history.append({"role": "user", "content": question})
+    #st.session_state.chat_history.append({"role": "user", "content": question})
 
     
     # Display chats
