@@ -95,6 +95,17 @@ def handle_userinput(question):
     st.session_state.chat_history = response['chat_history']
     st.write(response)  # Return only the answer from the response
 
+
+def generate_answer(question):
+    response = st.session_state.conversation({"question": question})
+    answer = response.get("answer").split("Helpful Answer:")[-1].strip()
+    explanation = response.get("source_documents", [])
+    doc_source = [d.page_content for d in explanation]
+
+    return answer, doc_source
+
+
+
 # Handling user questions #2
 def handle_userinput2(question):
    # response = st.session_state.conversation({"question": question})
@@ -107,7 +118,7 @@ def handle_userinput2(question):
         st.markdown(question)
 
     # Answer the question
-    #answer, doc_source = generate_answer(question)
+    answer, doc_source = generate_answer(question)
    
 #    with st.chat_message("assistant"):
 #        st.write(answer)
@@ -156,17 +167,7 @@ def main():
     # Ask a question
     if user_question:
         handle_userinput2(user_question)
-        
-
-
-def generate_answer(question):
-    response = st.session_state.conversation({"question": question})
-    answer = response.get("answer").split("Helpful Answer:")[-1].strip()
-    explanation = response.get("source_documents", [])
-    doc_source = [d.page_content for d in explanation]
-
-    return answer, doc_source
-    
+            
 
     
     
