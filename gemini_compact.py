@@ -131,7 +131,7 @@ def main():
     # Ask a question
     if user_question:
         # Append user question to history
-        st.session_state.history.append({"role": "user", "content": user_question})
+        st.session_state.chat_history.append({"role": "user", "content": user_question})
         # Add user question
         with st.chat_message("user"):
             st.markdown(user_question)
