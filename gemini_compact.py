@@ -125,10 +125,41 @@ def main():
 
     user_question = st.text_input("Ask a question about your documents:")
 
+    #if user_question:
+    #    handle_userinput(user_question)
+
+
+
+
+def generate_answer(question):
+    response = st.session_state.conversation({"question": question})
+    answer = response.get("answer").split("Helpful Answer:")[-1].strip()
+    explanation = response.get("source_documents", [])
+    doc_source = [d.page_content for d in explanation]
+
+    return answer, doc_source
+    
 
     
+    # Ask a question
     if user_question:
-        handle_userinput(user_question)
+        # Append user question to history
+        st.session_state.history.append({"role": "user", "content": user_question})
+        # Add user question
+        with st.chat_message("user"):
+            st.markdown(user_question)
+    
+        # Answer the question
+        #answer, doc_source = rag_functions.generate_answer(user_question, token)
+        answer, doc_source = rag_functions.generate_answer(user_question)
+        with st.chat_message("assistant"):
+            st.write(answer)
+        # Append assistant answer to history
+        st.session_state.history.append({"role": "assistant", "content": answer})
+    
+        # Append the document sources
+        st.session_state.source.append({"question": user_question, "answer": answer, "document": doc_source})
+
 
 
     st.sidebar.title("Source of Doc.")
