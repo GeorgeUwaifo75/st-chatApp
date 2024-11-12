@@ -121,7 +121,7 @@ def handle_userinput2(question):
         #with st.chat_message(message["role"]):
         #    st.markdown(message["content"])
 
-    for message in st.session_state.messages:
+    for message in st.session_state.chat_history:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
     # Add user message to chat history
