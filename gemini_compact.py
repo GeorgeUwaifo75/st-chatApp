@@ -128,6 +128,24 @@ def main():
     #if user_question:
     #    handle_userinput(user_question)
 
+    # Ask a question
+    if user_question:
+        # Append user question to history
+        st.session_state.history.append({"role": "user", "content": user_question})
+        # Add user question
+        with st.chat_message("user"):
+            st.markdown(user_question)
+    
+        # Answer the question
+        #answer, doc_source = rag_functions.generate_answer(user_question, token)
+        answer, doc_source = generate_answer(user_question)
+        with st.chat_message("assistant"):
+            st.write(answer)
+        # Append assistant answer to history
+        st.session_state.history.append({"role": "assistant", "content": answer})
+    
+        # Append the document sources
+        st.session_state.source.append({"question": user_question, "answer": answer, "document": doc_source})
 
 
 
@@ -141,26 +159,7 @@ def generate_answer(question):
     
 
     
-    # Ask a question
-    if user_question:
-        # Append user question to history
-        st.session_state.history.append({"role": "user", "content": user_question})
-        # Add user question
-        with st.chat_message("user"):
-            st.markdown(user_question)
     
-        # Answer the question
-        #answer, doc_source = rag_functions.generate_answer(user_question, token)
-        answer, doc_source = rag_functions.generate_answer(user_question)
-        with st.chat_message("assistant"):
-            st.write(answer)
-        # Append assistant answer to history
-        st.session_state.history.append({"role": "assistant", "content": answer})
-    
-        # Append the document sources
-        st.session_state.source.append({"question": user_question, "answer": answer, "document": doc_source})
-
-
 
     st.sidebar.title("Source of Doc.")
     doc_type = st.sidebar.selectbox("Pick Doc Source", ("Doc Types","URL", "PDF", "IvieAI"))
