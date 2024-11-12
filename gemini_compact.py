@@ -123,7 +123,7 @@ def handle_userinput2(question):
     with st.chat_message("assistant"):
         st.write(answer)
     # Append assistant answer to history
-    st.session_state.history.append({"role": "assistant", "content": answer})
+    st.session_state.chat_history.append({"role": "assistant", "content": answer})
 
     # Append the document sources
 #    st.session_state.source.append({"question": user_question, "answer": answer, "document": doc_source})
