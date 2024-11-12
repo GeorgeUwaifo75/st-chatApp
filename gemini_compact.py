@@ -130,7 +130,8 @@ def handle_userinput2(question):
     with st.chat_message("assistant"):
         st.write(answer)
     # Append assistant answer to history
-    st.session_state.chat_history.append({"role": "assistant", "content": answer})
+    #st.session_state.chat_history.append({"role": "assistant", "content": answer})
+    st.session_state['chat_history'].append({"role": "assistant", "content": answer})
 
     # Append the document sources
     #st.session_state.source.append({"question": question, "answer": answer, "document": doc_source})
@@ -161,12 +162,10 @@ def main():
     
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
-    #if "chat_history" not in st.session_state:
-    #    st.session_state.chat_history = None
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = None
 
-    if 'chat_history' not in st.session_state:
-        st.session_state.chat_history = []
-
+   
     st.header("GiTeksol Document Assistant (GDA)")
 
     user_question = st.text_input("Ask a question about your documents:")
