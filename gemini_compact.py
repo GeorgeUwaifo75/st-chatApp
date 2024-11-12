@@ -110,13 +110,16 @@ def generate_answer(question):
 def handle_userinput2(question):
    # response = st.session_state.conversation({"question": question})
    # st.session_state.chat_history = response['chat_history']
-# Display chats
-    for message in st.session_state.chat_history:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+
 
 # Append user question to history
     st.session_state.chat_history.append({"role": "user", "content": question})
+
+    # Display chats
+    for message in st.session_state.chat_history:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+            
     # Add user question
     with st.chat_message("user"):
         st.markdown(question)
