@@ -114,13 +114,20 @@ def handle_userinput2(question):
  
 # Append user question to history
     #st.session_state.chat_history.append({"role": "user", "content": question})
-
+    
     
     # Display chats
     #for message in st.session_state.chat_history:
         #with st.chat_message(message["role"]):
         #    st.markdown(message["content"])
-            
+
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+    # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt})  
+
+    
     # Add user question
     with st.chat_message("user"):
         st.markdown(question)
