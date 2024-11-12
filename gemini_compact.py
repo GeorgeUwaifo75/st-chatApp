@@ -109,7 +109,7 @@ def generate_answer(question):
 # Handling user questions #2
 def handle_userinput2(question):
    # response = st.session_state.conversation({"question": question})
-   # st.session_state.chat_history = response['chat_history']
+    st.session_state.chat_history = response['chat_history']
 
 # Append user question to history
     st.session_state.chat_history.append({"role": "user", "content": question})
@@ -126,7 +126,7 @@ def handle_userinput2(question):
     st.session_state.chat_history.append({"role": "assistant", "content": answer})
 
     # Append the document sources
-    st.session_state.source.append({"question": question, "answer": answer, "document": doc_source})
+    #st.session_state.source.append({"question": question, "answer": answer, "document": doc_source})
 
 
 
