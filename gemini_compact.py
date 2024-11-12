@@ -108,8 +108,7 @@ def handle_userinput2(question):
 
     # Answer the question
     #answer, doc_source = generate_answer(question)
-    response = st.session_state.conversation({"question": question})
-  
+   
 #    with st.chat_message("assistant"):
 #        st.write(answer)
     # Append assistant answer to history
