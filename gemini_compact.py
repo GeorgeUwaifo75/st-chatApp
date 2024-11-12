@@ -113,7 +113,7 @@ def handle_userinput2(question):
 
 
 # Append user question to history
-    st.session_state.history.append({"role": "user", "content": question})
+    st.session_state.chat_history.append({"role": "user", "content": question})
 
     # Display chats
     #for message in st.session_state.chat_history:
@@ -161,8 +161,11 @@ def main():
     
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
-    if "chat_history" not in st.session_state:
-        st.session_state.chat_history = None
+    #if "chat_history" not in st.session_state:
+    #    st.session_state.chat_history = None
+
+    if 'chat_history' not in st.session_state:
+        st.session_state.chat_history = []
 
     st.header("GiTeksol Document Assistant (GDA)")
 
