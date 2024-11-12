@@ -107,7 +107,7 @@ def handle_userinput2(question):
         st.markdown(question)
 
     # Answer the question
-#    answer, doc_source = generate_answer(user_question)
+    answer, doc_source = generate_answer(question)
 #    with st.chat_message("assistant"):
 #        st.write(answer)
     # Append assistant answer to history
