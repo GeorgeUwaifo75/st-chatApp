@@ -126,7 +126,7 @@ def handle_userinput2(question):
     st.session_state.chat_history.append({"role": "assistant", "content": answer})
 
     # Append the document sources
-    st.session_state.source.append({"question": user_question, "answer": answer, "document": doc_source})
+    st.session_state.source.append({"question": question, "answer": answer, "document": doc_source})
 
 
 
