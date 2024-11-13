@@ -101,8 +101,8 @@ def generate_answer(question):
     
     #st.session_state.chat_history.append({"role": "user", "content": question})
 
-    st.session_state.chat_history = response['chat_history']
-    st.write(response)  # Return only the answer from the response
+    #st.session_state.chat_history = response['chat_history']
+    #st.write(response)  # Return only the answer from the response
    
     answer = response.get("answer").split("Helpful Answer:")[-1].strip()
     explanation = response.get("source_documents", [])
@@ -114,9 +114,9 @@ def generate_answer(question):
 
 # Handling user questions #2
 def handle_userinput2(question):
-    #response = st.session_state.conversation({"question": question})
-    #st.session_state.chat_history = response['chat_history']
-    #st.write(response)  # Return only the answer from the response
+    response = st.session_state.conversation({"question": question})
+    st.session_state.chat_history = response['chat_history']
+    st.write(response)  # Return only the answer from the response
    
  
 # Append user question to history
