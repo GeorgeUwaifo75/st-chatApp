@@ -107,7 +107,7 @@ def generate_answer(question):
     else:
         for message in st.session_state.chat_history:
             with st.chat_message("user"):
-                st.markdown(message["content"])
+                st.markdown( st.chat_message("content"))
 
     
 
