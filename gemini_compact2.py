@@ -104,11 +104,7 @@ def generate_answer(question):
     
     
     for message in st.session_state.chat_history:
-        if isinstance(message, HumanMessage):
-            st.markdown(message["content"])
-        elif isinstance(message, AIMessage):
-            st.markdown(message["content"])
- 
+        pass
 
 
 
