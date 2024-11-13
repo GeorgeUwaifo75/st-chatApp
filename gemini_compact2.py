@@ -92,7 +92,7 @@ def get_vectorstore(text_chunks):
 # Handling user questions
 def handle_userinput(question):
     response = st.session_state.conversation({"question": question})
-    st.session_state.chat_history = response['chat_history']
+    #st.session_state.chat_history = response['chat_history']
     st.write(response)  # Return only the answer from the response
 
 
