@@ -100,17 +100,7 @@ def generate_answer(question):
     response = st.session_state.conversation({"question": question})
     
     st.session_state.chat_history.append({"role": "user", "content": question})
-    # Display chats
-    
-    
-    for message in st.session_state.chat_history:
-        pass
 
-
-
-
-
-    
     st.session_state.chat_history = response['chat_history']
     st.write(response)  # Return only the answer from the response
    
