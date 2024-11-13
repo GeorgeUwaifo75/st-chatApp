@@ -106,8 +106,10 @@ def generate_answer(question):
         st.session_state.chat_history = None
     else:
         for message in st.session_state.chat_history:
-            with st.chat_message(message["role"]):
+            with st.chat_message("user"):
                 st.markdown(message["content"])
+
+    
 
 
 
