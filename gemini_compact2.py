@@ -103,7 +103,7 @@ def generate_answer(question):
     # Display chats
     
     
-    for message in chat_history:
+    for message in st.session_state.chat_history:
         if isinstance(message, HumanMessage):
             print(f"User: {message.content}")
         elif isinstance(message, AIMessage):
