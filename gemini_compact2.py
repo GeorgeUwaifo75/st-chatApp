@@ -109,7 +109,7 @@ def generate_answer(question):
 # Handling user questions #2
 def handle_userinput2(question):
     response = st.session_state.conversation({"question": question})
-    #st.session_state.chat_history = response['chat_history']
+    st.session_state.chat_history = response['chat_history']
     st.write(response)  # Return only the answer from the response
    
  
