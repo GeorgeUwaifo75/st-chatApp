@@ -104,10 +104,10 @@ def generate_answer(question):
     
     
     for message in chat_history:
-    if isinstance(message, HumanMessage):
-        print(f"User: {message.content}")
-    elif isinstance(message, AIMessage):
-        print(f"AI: {message.content}")
+        if isinstance(message, HumanMessage):
+            print(f"User: {message.content}")
+        elif isinstance(message, AIMessage):
+            print(f"AI: {message.content}")
 
 
 
