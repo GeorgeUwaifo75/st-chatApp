@@ -101,7 +101,7 @@ def generate_answer(question):
 
 
 # Handling user questions 
-def handle_userinput2(question):
+def handle_userinput(question):
     response = st.session_state.conversation({"question": question})
     st.session_state.chat_history = response['chat_history']
     st.write(response)  # Return only the answer from the response
@@ -152,7 +152,7 @@ def get_conversation_chain(vectorstore):
 def main():
     load_dotenv()
     
-    st.set_page_config(page_title="Chat with multiple URLs", page_icon=":books:")
+    st.set_page_config(page_title="GiTeksol Document Assistant", page_icon=":books:")
     
     
     if "conversation" not in st.session_state:
@@ -165,12 +165,10 @@ def main():
 
     user_question = st.text_input("Ask a question about your documents:")
 
-    #if user_question:
-    #    handle_userinput(user_question)
-
+   
     # Ask a question
     if user_question:
-        handle_userinput2(user_question)
+        handle_userinput(user_question)
             
 
     
