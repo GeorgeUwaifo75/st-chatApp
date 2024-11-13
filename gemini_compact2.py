@@ -105,9 +105,10 @@ def generate_answer(question):
     
     for message in st.session_state.chat_history:
         if isinstance(message, HumanMessage):
-            print(f"User: {message.content}")
+            st.markdown(message["content"])
         elif isinstance(message, AIMessage):
-            print(f"AI: {message.content}")
+            st.markdown(message["content"])
+ 
 
 
 
