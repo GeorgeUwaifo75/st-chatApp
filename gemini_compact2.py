@@ -125,7 +125,7 @@ def handle_userinput(question):
         st.markdown(question)
 
     # Answer the question
-    #answer, doc_source = generate_answer(question)
+    answer, doc_source = generate_answer(question)
    
     with st.chat_message("assistant"):
         st.write(answer)
