@@ -175,7 +175,7 @@ def main():
     # Ask a question
     if user_question:
         handle_userinput(user_question)
-        clear_text()
+        #clear_text()
             
 
     
