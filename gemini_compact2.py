@@ -106,9 +106,9 @@ def generate_answer(question):
 
 # Handling user questions 
 def handle_userinput(question):
-    response = st.session_state.conversation({"question": question})
-    st.session_state.chat_history = response['chat_history']
-    st.write(response)  # Return only the answer from the response
+    #response = st.session_state.conversation({"question": question})
+    #st.session_state.chat_history = response['chat_history']
+    #st.write(response)  # Return only the answer from the response
    
  
 # Append user question to history
@@ -125,10 +125,10 @@ def handle_userinput(question):
         st.markdown(question)
 
     # Answer the question
-    #answer, doc_source = generate_answer(question)
+    answer, doc_source = generate_answer(question)
    
-    #with st.chat_message("assistant"):
-    #    st.write(answer)
+    with st.chat_message("assistant"):
+        st.write(answer)
     
   # Append assistant answer to history
     #st.session_state.chat_history.append({"role": "assistant", "content": answer})
