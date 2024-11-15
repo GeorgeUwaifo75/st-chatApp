@@ -151,9 +151,6 @@ def get_conversation_chain(vectorstore):
     )
     return conversation_chain
 
-def clear_text():
-    st.session_state["text"] = ""
-
 def main():
     load_dotenv()
     
@@ -175,9 +172,7 @@ def main():
     # Ask a question
     if user_question:
         handle_userinput(user_question)
-        #clear_text()
-            
-
+       
     st.sidebar.title("Source of Doc.")
     doc_type = st.sidebar.selectbox("Pick Doc Source", ("Doc Types","URL", "PDF", "IvieAI"))
 
