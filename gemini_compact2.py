@@ -93,8 +93,8 @@ def get_vectorstore(text_chunks):
 def generate_answer(question):
     response = st.session_state.conversation({"question": question})
 
-    #st.session_state.chat_history = response['chat_history']
-    #st.write(response)  # Return only the answer from the response
+    st.session_state.chat_history = response['chat_history']
+    st.write(response)  # Return only the answer from the response
    
     
     answer = response.get("answer").split("Helpful Answer:")[-1].strip()
@@ -142,7 +142,8 @@ def handle_userinput(question):
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
-    llm = ChatGoogleGenerativeAI(model='gemini-1.5-flash')
+    #llm = ChatGoogleGenerativeAI(model='gemini-1.5-flash')
+    llm = ChatGoogleGenerativeAI(model='gemini-pro')
     
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
