@@ -75,7 +75,7 @@ def get_text_chunks(text):
    # main_placeholder.text("Splitting text...")
     text_splitter = RecursiveCharacterTextSplitter(
         separators = ["\n\n", "\n", " "],
-        chunk_size = 1000,
+        chunk_size = 1600,
         chunk_overlap = 200,
         length_function = len
     )
@@ -164,7 +164,7 @@ def main():
         st.session_state.chat_history = None
 
    
-    st.header("GiTeksol Document Assistant [ *GDA* ]")
+    st.header("GiTeksol Document Assistant [*GDA*]")
 
     user_question = st.text_input("Ask a question about your documents:")
 
