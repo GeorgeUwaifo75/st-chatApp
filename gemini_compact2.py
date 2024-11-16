@@ -164,10 +164,9 @@ def main():
         st.session_state.chat_history = None
 
    
-    st.header("GiTeksol Document Assistant (*GDA*)")
+    st.header("GiTeksol Document Assistant (GDA**)")
 
-    user_question = st.text_input("Ask a question about your documents:", key="text")
-    #user_question = st.text_input("Ask a question about your documents:")
+    user_question = st.text_input("Ask a question about your documents:")
 
    
     # Ask a question
