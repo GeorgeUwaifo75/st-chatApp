@@ -143,8 +143,7 @@ def handle_userinput(question):
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
     llm = ChatGoogleGenerativeAI(model='gemini-1.5-flash')
-    #llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
-
+    
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
@@ -165,7 +164,7 @@ def main():
         st.session_state.chat_history = None
 
    
-    st.header("GiTeksol Document Assistant (*[GDA]*)")
+    st.header("GiTeksol Document Assistant [ *GDA* ]")
 
     user_question = st.text_input("Ask a question about your documents:")
 
@@ -182,7 +181,7 @@ def main():
     
     if doc_type == "URL" or "PDF":
         with st.sidebar:
-                st.subheader("URL Sources...")
+                st.subheader("Doc Sources...")
                 if doc_type == "URL": 
                     for i in range(3):
                         url_input = st.sidebar.text_input(f"Source URL{i+1}:")
@@ -190,7 +189,6 @@ def main():
                 elif doc_type == "PDF":
                        pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
         
-                #process_url = st.button("Process URL(s)")
                 process_url = st.button("Process Docs")
                 if process_url:    
                     with st.spinner("Processing"):
@@ -213,10 +211,6 @@ def main():
                             #create conversation chain
                             st.session_state.conversation = get_conversation_chain(vectorstore)
     
-    
-    
-
-
     
     elif doc_type == "PDF":
         st.sidebar.write("PDF")
