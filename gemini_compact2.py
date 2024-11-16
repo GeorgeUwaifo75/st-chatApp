@@ -75,7 +75,7 @@ def get_text_chunks(text):
    # main_placeholder.text("Splitting text...")
     text_splitter = RecursiveCharacterTextSplitter(
         separators = ["\n\n", "\n", " "],
-        chunk_size = 800,
+        chunk_size = 1000,
         chunk_overlap = 200,
         length_function = len
     )
@@ -93,8 +93,8 @@ def get_vectorstore(text_chunks):
 def generate_answer(question):
     response = st.session_state.conversation({"question": question})
 
-    st.session_state.chat_history = response['chat_history']
-    st.write(response)  # Return only the answer from the response
+    #st.session_state.chat_history = response['chat_history']
+    #st.write(response)  # Return only the answer from the response
    
     
     answer = response.get("answer").split("Helpful Answer:")[-1].strip()
