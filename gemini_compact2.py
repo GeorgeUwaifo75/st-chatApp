@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import requests
@@ -17,7 +18,8 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
 
-json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
+#json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
+json_url = os.environ.get("JSON_URL")
 response = requests.get(json_url)
 json_data = response.content
 
@@ -142,8 +144,8 @@ def handle_userinput(question):
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
-    llm = ChatGoogleGenerativeAI(model='gemini-1.5-flash')
-    #llm = ChatGoogleGenerativeAI(model='gemini-pro')
+    #llm = ChatGoogleGenerativeAI(model='gemini-1.5-flash')
+    llm = ChatGoogleGenerativeAI(model='gemini-pro')
     
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
