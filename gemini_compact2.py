@@ -18,8 +18,8 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
 
-#json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
-json_url = os.environ.get("JSON_URL")
+json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
+#json_url = os.environ.get("JSON_URL")
 response = requests.get(json_url)
 json_data = response.content
 
