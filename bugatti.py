@@ -144,7 +144,7 @@ def handle_userinput(question):
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
-    llm = ChatGoogleGenerativeAI(model='gemini-1.5-flash-8B')
+    llm = ChatGoogleGenerativeAI(model='gemini-1.0-pro')
     #llm = ChatGoogleGenerativeAI(model='gemini-pro')
     
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
