@@ -150,8 +150,9 @@ def handle_userinput(question):
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
-    llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
-    #llm = ChatGoogleGenerativeAI(model='gemini-pro')
+    #llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
+    llm = HuggingFaceEndpoint(
+    endpoint_url="mistralai/Mistral-7B-Instruct-v0.2/",temperature=0.1, max_length=512)
     
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
@@ -226,6 +227,8 @@ def main():
 
                             #create conversation chain
                             st.session_state.conversation = get_conversation_chain(vectorstore)
+                            #st.session_state.conversation = get_conversation_chain2(vectorstore)
+    
     
     
     elif doc_type == "PDF":
