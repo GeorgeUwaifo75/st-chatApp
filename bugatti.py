@@ -149,7 +149,7 @@ def handle_userinput(question):
 
 
 # Storing converstations as chain of outputs
-def get_conversation_chain2(vectorstore):
+def get_conversation_chain(vectorstore):
     #llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
     llm = HuggingFaceEndpoint(
     endpoint_url="mistralai/Mistral-7B-Instruct-v0.2/",temperature=0.7, max_length=512)
@@ -163,7 +163,7 @@ def get_conversation_chain2(vectorstore):
     return conversation_chain
 
 
-def get_conversation_chain(vectorstore):
+def get_conversation_chain2(vectorstore):
     llm = HuggingFaceEndpoint(
     endpoint_url="mistralai/Mistral-7B-Instruct-v0.2/",temperature=0.1, max_length=512)
     conversation_chain = load_qa_chain(llm, chain_type="stuff")
