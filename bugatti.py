@@ -17,6 +17,11 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.chains.question_answering import load_qa_chain
+from langchain import HuggingFaceHub
+from langchain_community.llms import HuggingFaceEndpoint
+
 
 json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
 #json_url = os.environ.get("JSON_URL")
@@ -88,6 +93,7 @@ def get_text_chunks(text):
 # Using Google's embedding004 model to create embeddings and FAISS to store the embeddings
 def get_vectorstore(text_chunks):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+    #embeddings = HuggingFaceEmbeddings()
     vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     return vectorstore
 
@@ -153,6 +159,13 @@ def get_conversation_chain(vectorstore):
         retriever=vectorstore.as_retriever(),
         memory=memory
     )
+    return conversation_chain
+
+
+def get_conversation_chain2(vectorstore):
+    llm = HuggingFaceEndpoint(
+    endpoint_url="mistralai/Mistral-7B-Instruct-v0.2/",temperature=0.1, max_length=512)
+    conversation_chain = load_qa_chain(llm, chain_type="stuff")
     return conversation_chain
 
 def main():
