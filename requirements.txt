@@ -10,3 +10,4 @@ sentence-transformers
 huggingface_hub
 chromadb
 tiktoken
+cython
