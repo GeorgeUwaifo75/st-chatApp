@@ -56,4 +56,9 @@ if not st.session_state.user_state['logged_in']:
 
 elif st.session_state.user_state['logged_in']:
     st.write('Welcome to the app')
-    st.write('You are logged in as:', st.session_state.user_state['username'])
+    st.write('You are logged in as:', st.session_state.user_state['mail_adress'])
+    st.write('You are a:', st.session_state.user_state['user_type'])
+    st.write('Your fixed user message:', st.session_state.user_state['fixed_user_message'])
+    if st.session_state.user_state['user_type'] == 'admin':
+        st.write('You have admin rights. Here is the database')
+        st.table(database)
