@@ -16,3 +16,11 @@ if not st.session_state.user_state['logged_in']:
     username = st.text_input('Username')
     password = st.text_input('Password', type='password')
     submit = st.button('Login')
+
+# Check if user is logged in
+    if submit and st.session_state.user_state['logged_in'] == False:
+        if username == 'admin' and password == '1234':
+            st.session_state.user_state['username'] = username
+            st.session_state.user_state['password'] = password
+            st.session_state.user_state['logged_in'] = True
+            st.write('You are logged in')
