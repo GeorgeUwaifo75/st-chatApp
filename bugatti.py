@@ -190,11 +190,13 @@ def main():
     # Ask a question
     if user_question:
         handle_userinput(user_question)
-        
+    
+    # #87CEFA    
+    
     st.markdown("""
     <style>
         [data-testid=stSidebar] {
-            background-color: #87CEFA;
+            background-color:  #D3D3D3;
         }
     </style>
     """, unsafe_allow_html=True)
