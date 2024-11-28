@@ -191,7 +191,14 @@ def main():
     if user_question:
         handle_userinput(user_question)
         
-       
+    st.markdown("""
+    <style>
+        [data-testid=stSidebar] {
+            background-color: #ff000050;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+    
     st.sidebar.title("Source of Doc.")
     doc_type = st.sidebar.selectbox("Pick Doc Source", ("Doc Types","URL", "PDF", "IvieAI"))
 
