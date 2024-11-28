@@ -191,12 +191,12 @@ def main():
     if user_question:
         handle_userinput(user_question)
     
-    # #87CEFA    
+    #DCD6D0    
     
     st.markdown("""
     <style>
         [data-testid=stSidebar] {
-            background-color:  #DCD6D0;
+            background-color:  #87CEFA;
         }
     </style>
     """, unsafe_allow_html=True)
