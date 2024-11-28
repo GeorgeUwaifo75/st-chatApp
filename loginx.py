@@ -10,7 +10,7 @@ st.title('Amazing User Login App')
 
 #sheet_csv = st.secrets["database_url"]
 #sheet_csv = os.environ.get["database_url"]
-sheet_csv = database_url
+sheet_csv = 
 
 res = rs.get(url=sheet_csv)
 open('database.csv', 'wb').write(res.content)
