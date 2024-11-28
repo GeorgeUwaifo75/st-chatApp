@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests as rs
+import dotenv
 
 st.title('Amazing User Login App')
 
