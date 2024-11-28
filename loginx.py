@@ -4,7 +4,7 @@ import pandas as pd
 import requests as rs
 
 #from st_pages import hide_pages
-#from time import sleep
+from time import sleep
 
 from dotenv import load_dotenv
 
@@ -58,8 +58,8 @@ if not st.session_state.user_state['logged_in']:
                 st.write('You are logged in')
                 st.rerun()
 
-                #sleep(0.5)
-                #st.switch_page("bugatti.py")
+                sleep(0.5)
+                st.switch_page("bugatti.py")
             else:
                 st.write('Invalid username or password')
     
