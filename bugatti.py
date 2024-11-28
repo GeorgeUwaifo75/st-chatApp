@@ -174,7 +174,7 @@ def main():
     load_dotenv()
     
     st.set_page_config(page_title="GiTeksol Document Assistant", page_icon=":books:")
-    #st.write("This is :blue[test]")
+    st.write("This is :blue[test]")
     
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
