@@ -2,6 +2,10 @@ import os
 import streamlit as st
 import pandas as pd
 import requests as rs
+
+from st_pages import hide_pages
+from time import sleep
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -53,6 +57,9 @@ if not st.session_state.user_state['logged_in']:
                 st.session_state.user_state['fixed_user_message'] = user_['fixed_user_message'].values[0]
                 st.write('You are logged in')
                 st.rerun()
+
+                sleep(0.5)
+                st.switch_page("bugatti.py")
             else:
                 st.write('Invalid username or password')
     
