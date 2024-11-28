@@ -29,5 +29,5 @@ if not st.session_state.user_state['logged_in']:
             st.warning('Invalid username or password')
     
     elif st.session_state.user_state['logged_in']:
-    st.write('Welcome to the app')
-    st.write('You are logged in as:', st.session_state.user_state['username'])
+        st.write('Welcome to the app')
+        st.write('You are logged in as:', st.session_state.user_state['username'])
