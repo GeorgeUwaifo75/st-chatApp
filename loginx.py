@@ -24,3 +24,5 @@ if not st.session_state.user_state['logged_in']:
             st.session_state.user_state['password'] = password
             st.session_state.user_state['logged_in'] = True
             st.write('You are logged in')
+        else:
+            st.warning('Invalid username or password')
