@@ -172,7 +172,8 @@ def get_conversation_chain2(vectorstore):
 
 def main():
     load_dotenv()
-    
+    st.write("This is :blue[test]")
+
     st.set_page_config(page_title="GiTeksol Document Assistant", page_icon=":books:")
     
     
