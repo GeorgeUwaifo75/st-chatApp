@@ -10,7 +10,7 @@ st.title('Amazing User Login App')
 
 #sheet_csv = st.secrets["database_url"]
 #sheet_csv = os.environ.get["database_url"]
-sheet_csv = 'https://docs.google.com/spreadsheets/d/1QAAqdQaie3Alt4l1QucyC9SS_XvpeG9vgaOH8GXJCSs/edit?usp=sharing'
+sheet_csv = 'https://docs.google.com/spreadsheets/d/1QAAqdQaie3Alt4l1QucyC9SS_XvpeG9vgaOH8GXJCSs/export?format=csv'
 
 res = rs.get(url=sheet_csv)
 open('database.csv', 'wb').write(res.content)
