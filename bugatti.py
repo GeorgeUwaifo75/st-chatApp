@@ -188,7 +188,7 @@ def main():
     </style>
     """
 
-st.markdown(page_bg_img, unsafe_allow_html=True)
+    st.markdown(page_bg_img, unsafe_allow_html=True)
 
     
     st.set_page_config(page_title="GiTeksol Document Assistant", page_icon=":books:")
