@@ -9,3 +9,10 @@ if 'user_state' not in st.session_state:
         'password': '',
         'logged_in': False
     }
+
+if not st.session_state.user_state['logged_in']:
+    # Create login form
+    st.write('Please login')
+    username = st.text_input('Username')
+    password = st.text_input('Password', type='password')
+    submit = st.button('Login')
