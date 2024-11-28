@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+#The tutorial page
+#https://oguzhari.medium.com/making-user-login-application-with-streamlit-91ce5e598f23
+
 st.title('Amazing User Login App')
 
 #sheet_csv = st.secrets["database_url"]
