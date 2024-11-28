@@ -30,12 +30,6 @@ json_data = response.content
 
 urls = []
 
-st.markdown(""" 
-div.stButton > button:first-child {
-background-color: #00cc00;color:white;font-size:20px;height:3em;width:30em;border-radius:10px 10px 10px 10px;
-}
-""", unsafe_allow_html=True)
-
 
 #Upload IvieAI dataset
 def upload_ivieAi():
@@ -219,6 +213,13 @@ def main():
                         handle_urlinput(url_input)
                 elif doc_type == "PDF":
                        pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
+                
+                st.markdown(""" 
+                div.stButton > button:first-child {
+                background-color: #00cc00;color:white;font-size:20px;height:3em;width:30em;border-radius:10px 10px 10px 10px;
+                }
+                """, unsafe_allow_html=True)
+
             
                 process_url = st.button("Process Docs")
                 if process_url:    
