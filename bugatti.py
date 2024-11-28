@@ -182,7 +182,7 @@ def main():
         st.session_state.chat_history = None
 
    
-    st.header("GiTeksol :grean[Document] Assistant [*:blue[GDA]*]")
+    st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
 
     user_question = st.text_input("Ask a question about your documents:")
 
