@@ -3,8 +3,8 @@ import streamlit as st
 import pandas as pd
 import requests as rs
 
-from st_pages import hide_pages
-from time import sleep
+#from st_pages import hide_pages
+#from time import sleep
 
 from dotenv import load_dotenv
 
