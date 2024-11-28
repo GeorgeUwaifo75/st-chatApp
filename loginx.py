@@ -1,6 +1,14 @@
 import streamlit as st
+import pandas as pd
+import requests as rs
 
 st.title('Amazing User Login App')
+
+sheet_csv = st.secrets["database_url"]
+res = rs.get(url=sheet_csv)
+open('database.csv', 'wb').write(res.content)
+database = pd.read_csv('database.csv', header=0)
+
 
 # Create user_state
 if 'user_state' not in st.session_state:
