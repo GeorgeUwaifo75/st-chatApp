@@ -201,7 +201,7 @@ def main():
     </style>
     """, unsafe_allow_html=True)
     
-    st.sidebar.title(":black[Source of Doc.]")
+    st.sidebar.title(":yellow[Source of Doc.]")
     doc_type = st.sidebar.selectbox("Pick Doc Source", ("Doc Types","URL", "PDF", "IvieAI"))
 
 
