@@ -29,7 +29,7 @@ response = requests.get(json_url)
 json_data = response.content
 
 urls = []
-modstr=""
+
 
 #Upload IvieAI dataset
 def upload_ivieAi():
