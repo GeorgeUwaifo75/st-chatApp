@@ -188,7 +188,7 @@ def main():
    
     st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
 
-    user_question = st.text_input("Ask a question about your documents{modstr}:")
+    user_question = st.text_input(f"Ask a question about your documents{modstr}:")
 
    
     # Ask a question
