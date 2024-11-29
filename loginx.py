@@ -120,7 +120,7 @@ elif st.session_state.user_state['logged_in']:
     st.write('Your fixed user message:', st.session_state.user_state['fixed_user_message'])
     
     sleep(0.5)
-    st.switch_page("/mount/src/st-chatapp/pages/bugatti.py")
+    st.switch_page("pages/bugatti.py")
     #st.page_link("/mount/src/st-chatapp/pages/bugatti.py")
     
     if st.session_state.user_state['user_type'] == 'admin':
