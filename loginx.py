@@ -58,8 +58,8 @@ if not st.session_state.user_state['logged_in']:
                 st.write('You are logged in')
                 st.rerun()
 
-                sleep(0.5)
-                st.switch_page("st-chatApp/bugatti.py")
+                #sleep(0.5)
+                #st.switch_page("st-chatApp/bugatti.py")
             else:
                 st.write('Invalid username or password')
     
@@ -71,7 +71,7 @@ elif st.session_state.user_state['logged_in']:
     st.write('Your fixed user message:', st.session_state.user_state['fixed_user_message'])
     
     sleep(0.5)
-    st.switch_page("st-chatApp/bugatti.py")
+    st.switch_page("/bugatti.py")
     
     if st.session_state.user_state['user_type'] == 'admin':
         st.write('You have admin rights. Here is the database')
