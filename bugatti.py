@@ -29,7 +29,7 @@ response = requests.get(json_url)
 json_data = response.content
 
 urls = []
-
+modstr=""
 
 #Upload IvieAI dataset
 def upload_ivieAi():
@@ -157,7 +157,7 @@ def get_conversation_chain(vectorstore):
     #endpoint_url="mistralai/Mistral-7B-Instruct-v0.2/",temperature=0.3, max_length=512)
     #endpoint_url="Qwen/QwQ-32B-Preview",temperature=0.1, max_length=512)
     #endpoint_url="meta-llama/Llama-3.1-8B-Instruct/",temperature=0.3, max_length=512)
-    
+    modstr = "[Mistral]"
     
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
@@ -188,7 +188,7 @@ def main():
    
     st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
 
-    user_question = st.text_input("Ask a question about your documents:")
+    user_question = st.text_input("Ask a question about your documents{modstr}:")
 
    
     # Ask a question
