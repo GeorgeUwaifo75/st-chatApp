@@ -153,8 +153,9 @@ def get_conversation_chain(vectorstore):
     #llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
 
     llm = HuggingFaceEndpoint(
+    endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.65, max_length=512)
     #endpoint_url="mistralai/Mistral-7B-Instruct-v0.2/",temperature=0.65, max_length=512)
-    endpoint_url="Qwen/QwQ-32B-Preview",temperature=0.65, max_length=512)
+    #endpoint_url="Qwen/QwQ-32B-Preview",temperature=0.65, max_length=512)
     
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
