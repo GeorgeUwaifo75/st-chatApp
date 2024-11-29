@@ -72,7 +72,7 @@ elif st.session_state.user_state['logged_in']:
     
     sleep(0.5)
     #st.switch_page("bugatti.py")
-    st.page_link("/bugatti.py")
+    st.page_link("pages/bugatti.py")
     
     if st.session_state.user_state['user_type'] == 'admin':
         st.write('You have admin rights. Here is the database')
