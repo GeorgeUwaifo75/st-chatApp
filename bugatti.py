@@ -200,7 +200,7 @@ def main():
     st.markdown("""
     <style>
         [data-testid=stSidebar] {
-            background-color:  #87CEFB;
+            background-color:  #97CEFB;
         }
     </style>
     """, unsafe_allow_html=True)
