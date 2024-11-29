@@ -30,7 +30,15 @@ json_data = response.content
 
 urls = []
 
-
+def hide_sidebar():
+    st.markdown("""
+    <style>
+        section[data-testid="stSidebar"][aria-expanded="true"]{
+            display: none;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+    
 #Upload IvieAI dataset
 def upload_ivieAi():
     # Load the JSON data into a Python dictionary
@@ -172,7 +180,7 @@ def get_conversation_chain2(vectorstore):
 
 def main():
     load_dotenv()
-    
+    hide_sidebar() 
     st.set_page_config(page_title="GiTeksol Document Assistant", page_icon=":books:")
     #st.write("This is :blue[test]")
     
