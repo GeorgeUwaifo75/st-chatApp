@@ -12,8 +12,11 @@ load_dotenv()
 
 st.set_page_config(page_title="GiTeksol Document Assistant", page_icon=":books:")
     
-#The tutorial page
+#The tutorial page for User login page
 #https://oguzhari.medium.com/making-user-login-application-with-streamlit-91ce5e598f23
+
+#Tutorial to hide the pages
+#https://stackoverflow.com/questions/78624469/simplest-way-to-hide-a-page-from-streamlit-sidebar
 
 st.title('User Login')
 
