@@ -71,8 +71,8 @@ elif st.session_state.user_state['logged_in']:
     st.write('Your fixed user message:', st.session_state.user_state['fixed_user_message'])
     
     sleep(0.5)
-    st.switch_page("pages/bugatti.py")
-    #st.page_link("pages/app2.py")
+    #st.switch_page("pages/bugatti.py")
+    st.page_link("pages/app2.py")
     
     if st.session_state.user_state['user_type'] == 'admin':
         st.write('You have admin rights. Here is the database')
