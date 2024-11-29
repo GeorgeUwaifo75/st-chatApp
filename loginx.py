@@ -56,7 +56,7 @@ st.write("**All Pages Page**")
 all_app_pages = list(source_util.get_pages(ctx_main_script).values())
 st.json(all_app_pages, expanded=True)
 
-st.page_link(page, label="Page Two")
+#st.page_link(page, label="Page Two")
 
 
 
@@ -121,7 +121,7 @@ elif st.session_state.user_state['logged_in']:
     
     sleep(0.5)
     #st.switch_page("pages/bugatti.py")
-    #st.page_link("pages/bugatti.py")
+    st.page_link("/mount/src/st-chatapp/pages/bugatti.py")
     
     if st.session_state.user_state['user_type'] == 'admin':
         st.write('You have admin rights. Here is the database')
