@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+st.set_page_config(page_title="GiTeksol Document Assistant", page_icon=":books:")
+    
 #The tutorial page
 #https://oguzhari.medium.com/making-user-login-application-with-streamlit-91ce5e598f23
 
