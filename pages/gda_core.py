@@ -139,6 +139,8 @@ def handle_userinput(question):
     with st.chat_message("assistant"):
         st.write(answer)
     
+    st.write(response)  # Return only the answer from the response
+   
   # Append assistant answer to history
     #st.session_state.chat_history.append({"role": "assistant", "content": answer})
     
