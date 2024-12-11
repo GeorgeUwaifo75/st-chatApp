@@ -109,7 +109,7 @@ def generate_answer(question):
     explanation = response.get("source_documents", [])
     doc_source = [d.page_content for d in explanation]
 
-    return answer, doc_source
+    return answer, doc_source, response
 
 
 
@@ -134,14 +134,14 @@ def handle_userinput(question):
         st.markdown(question)
 
     # Answer the question
-    answer, doc_source = generate_answer(question)
+    answer, doc_source, response = generate_answer(question)
    
     with st.chat_message("assistant"):
         st.write(answer)
     
     st.write(response)  # Return only the answer from the response
-   
-  # Append assistant answer to history
+    
+    # Append assistant answer to history
     #st.session_state.chat_history.append({"role": "assistant", "content": answer})
     
     # Append the document sources
