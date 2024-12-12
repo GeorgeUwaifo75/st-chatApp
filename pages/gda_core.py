@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import requests
 import json
+import re
 import urllib.request
 
 from langchain.document_loaders import TextLoader
@@ -113,6 +114,34 @@ def generate_answer(question):
 
 
 
+
+def display_chat_history(json_data):
+    """
+    Displays the chat history from the given JSON data in a readable format.
+
+    Args:
+        json_data (dict): A dictionary representing the JSON structure.
+    """
+
+    chat_history = json_data.get("chat_history", [])
+    
+    st.write("Chat History:")
+    for i, message in enumerate(chat_history):
+        # Extract the content from the string representation of the message
+        match = re.search(r"content='(.*?)'", message)
+        if match:
+            content = match.group(1)
+        else:
+          content = "Could not parse message"
+
+        if "HumanMessage" in message:
+            st.write(f"  Human {i//2 + 1}: {content}")
+        elif "AIMessage" in message:
+            st.write(f"  AI {i//2 + 1}: {content}")
+        else:
+          st.write(f"  Unrecognized Message {i//2 +1}: {content}")
+
+
 # Handling user questions 
 def handle_userinput(question):
     #response = st.session_state.conversation({"question": question})
@@ -138,8 +167,10 @@ def handle_userinput(question):
    
     with st.chat_message("assistant"):
         st.write(answer)
-    
-    st.write(response)  # Return only the answer from the response
+
+    json_data = json.loads(response)
+    display_chat_history(json_data)
+    #st.write(response)  # Return only the answer from the response
 
 
 
