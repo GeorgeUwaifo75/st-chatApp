@@ -110,8 +110,10 @@ def generate_answer(question):
     explanation = response.get("source_documents", [])
     doc_source = [d.page_content for d in explanation]
 
-    st.write("Type of response is: ",type(response))
-    st.write("Value of response is: ",response)
+    #st.write("Type of response is: ",type(response))
+    #st.write("Value of response is: ",response)
+
+    dump_resp = json.dumps(response);
     
     return answer, doc_source, response
 
