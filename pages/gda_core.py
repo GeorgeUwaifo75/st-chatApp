@@ -113,7 +113,7 @@ def generate_answer(question):
     #st.write("Type of response is: ",type(response))
     #st.write("Value of response is: ",response)
 
-    #dump_resp = json.dumps(response);
+    dump_resp = json.dumps(response);
     
     return answer, doc_source, response
 
