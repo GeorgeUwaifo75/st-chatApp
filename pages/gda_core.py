@@ -138,6 +138,7 @@ def generate_answer(question):
     # Attempt to convert to JSON (will still error if the value is not serializable)
     try:
       dump_resp = json.dumps(response)
+      st.write(dump_resp)  
     except Exception as e:
       print ("JSON error encountered when serializing dict:", e)
 
@@ -198,7 +199,7 @@ def handle_userinput(question):
     with st.chat_message("assistant"):
         st.write(answer)
 
-    st.write(type(response))
+    #st.write(type(response))
     #json_data = json.loads(response)
     
     #json_data = json.dumps(response)
