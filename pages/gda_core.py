@@ -111,12 +111,7 @@ def generate_answer(question):
     explanation = response.get("source_documents", [])
     doc_source = [d.page_content for d in explanation]
 
-
-    
-
     return answer, doc_source, response
-
-
 
 
 
@@ -149,7 +144,8 @@ def handle_userinput(question):
     st.write(response)
     #st.write(type(response))
 
-    json_data = json.dumps(response)
+    json_data = str(response)
+    #json_data = json.dumps(response)
     
     #display_chat_history(dump_resp)
     
