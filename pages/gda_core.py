@@ -110,6 +110,9 @@ def generate_answer(question):
     explanation = response.get("source_documents", [])
     doc_source = [d.page_content for d in explanation]
 
+    st.write("Type of response is: ",type(response))
+    st.write("Value of response is: ",response)
+    
     return answer, doc_source, response
 
 
@@ -171,7 +174,7 @@ def handle_userinput(question):
     #st.write(type(response))
     #json_data = json.loads(response)
     json_data = response
-    display_chat_history(json_data)
+    #display_chat_history(json_data)
     #st.write(response)  # Return only the answer from the response
 
 
