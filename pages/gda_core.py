@@ -199,17 +199,9 @@ def handle_userinput(question):
     with st.chat_message("assistant"):
         st.write(answer)
 
-    #st.write(type(response))
+    st.write(type(response))
     #json_data = json.loads(response)
     
-    try:
-      dump_resp = json.dumps(response)
-        
-    except Exception as e:
-      print ("JSON error encountered when serializing dict:", e)
-
-    st.write("Type of response after conversion:",type(dump_resp))
-    st.write("Value of response after conversion:",dump_resp)
     
     #json_data = response
     
