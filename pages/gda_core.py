@@ -185,6 +185,7 @@ def handle_userinput(question):
     st.write(response)
 
 #******* Begin
+    match=""
     chat_history = response.get("chat_history", [])
     
     for i, message in enumerate(chat_history):
