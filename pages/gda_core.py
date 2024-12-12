@@ -111,7 +111,7 @@ def generate_answer(question):
     explanation = response.get("source_documents", [])
     doc_source = [d.page_content for d in explanation]
 
-    st.write("explanation:",explanation)
+    #st.write("explanation:",explanation)
     
     return answer, doc_source, response
 
