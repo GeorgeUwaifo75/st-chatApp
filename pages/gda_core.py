@@ -140,7 +140,15 @@ def handle_userinput(question):
         st.write(answer)
     
     st.write(response)  # Return only the answer from the response
-    
+
+
+    # Display chats
+    for message in st.session_state.chat_history:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+
+
     # Append assistant answer to history
     #st.session_state.chat_history.append({"role": "assistant", "content": answer})
     
