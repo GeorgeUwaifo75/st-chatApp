@@ -99,7 +99,7 @@ def get_vectorstore(text_chunks):
     return vectorstore
 
 
-def generate_answer(question):
+def generate_answer2(question):
     response = st.session_state.conversation({"question": question})
 
     st.session_state.chat_history = response['chat_history']
@@ -117,7 +117,32 @@ def generate_answer(question):
     
     return answer, doc_source, response
 
+def generate_answer(question):
+    response = st.session_state.conversation({"question": question})
 
+    st.session_state.chat_history = response['chat_history']
+    #st.write(response)  # Return only the answer from the response
+
+
+    answer = response.get("answer").split("Helpful Answer:")[-1].strip()
+    explanation = response.get("source_documents", [])
+    doc_source = [d.page_content for d in explanation]
+
+
+    # Debugging code
+    print("Debugging response dictionary:")
+    for key, value in response.items():
+        print(f"Key: {key}, Type: {type(value)}, Value: {value}")
+
+
+    # Attempt to convert to JSON (will still error if the value is not serializable)
+    try:
+      dump_resp = json.dumps(response)
+    except Exception as e:
+      print ("JSON error encountered when serializing dict:", e)
+
+
+    return answer, doc_source, response
 
 
 def display_chat_history(json_data):
