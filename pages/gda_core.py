@@ -159,9 +159,9 @@ def handle_userinput(question):
         st.write(answer)
 
     st.write(response)
-    st.write(type(response))
+    #st.write(type(response))
 
-    #json_data = json.loads(response)
+    json_data = json.loads(response)
     
     
     #json_data = response
