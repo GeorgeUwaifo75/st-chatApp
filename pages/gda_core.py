@@ -183,6 +183,25 @@ def handle_userinput(question):
         st.write(answer)
 
     st.write(response)
+
+#******* Begin
+    for i, message in enumerate(chat_history):
+        # Extract the content from the string representation of the message
+        match = re.search(r"content='(.*?)'", message)
+        if match:
+            content = match.group(1)
+        else:
+          content = "Could not parse message"
+
+        if "HumanMessage" in message:
+            st.write(f"  Human {i//2 + 1}: {content}")
+        elif "AIMessage" in message:
+            st.write(f"  AI {i//2 + 1}: {content}")
+        else:
+          st.write(f"  Unrecognized Message {i//2 +1}: {content}")
+
+#******* End
+
     #json_data = json.loads(response)
     
     
