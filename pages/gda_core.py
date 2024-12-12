@@ -147,7 +147,7 @@ def handle_userinput(question):
     json_data = str(response)
     #json_data = json.dumps(response)
     
-    #display_chat_history(dump_resp)
+    display_chat_history(json_data)
     
     
     
