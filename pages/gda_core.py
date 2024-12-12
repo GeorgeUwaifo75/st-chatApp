@@ -112,19 +112,7 @@ def generate_answer(question):
     doc_source = [d.page_content for d in explanation]
 
 
-    # Debugging code
-    print("Debugging response dictionary:")
-    for key, value in response.items():
-        print(f"Key: {key}, Type: {type(value)}, Value: {value}")
-
-
-    # Attempt to convert to JSON (will still error if the value is not serializable)
-    try:
-      dump_resp = json.dumps(response)
-        
-    except Exception as e:
-      print ("JSON error encountered when serializing dict:", e)
-
+    
 
     return answer, doc_source, response
 
