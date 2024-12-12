@@ -110,8 +110,8 @@ def generate_answer(question):
     explanation = response.get("source_documents", [])
     doc_source = [d.page_content for d in explanation]
 
-    #st.write("Type of response is: ",type(response))
-    #st.write("Value of response is: ",response)
+    st.write("Type of response is: ",type(response))
+    st.write("Value of response is: ",response)
     
     return answer, doc_source, response
 
@@ -174,9 +174,9 @@ def handle_userinput(question):
     #st.write(type(response))
     #json_data = json.loads(response)
     
-    json_data = json.dumps(response)
-    st.write("Type of response after conversion:",type(json_data))
-    st.write("Value of response after conversion:",json_data)
+    #json_data = json.dumps(response)
+    #st.write("Type of response after conversion:",type(json_data))
+    #st.write("Value of response after conversion:",json_data)
     
     #json_data = response
     
