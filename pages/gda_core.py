@@ -116,8 +116,7 @@ def generate_answer(question):
 
     # Display chats
     for message in st.session_state.chat_history:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+        pass
     
     return answer, doc_source, response
 
