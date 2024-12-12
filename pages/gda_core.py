@@ -146,8 +146,9 @@ def handle_userinput(question):
 
     json_data = str(response)
     #json_data = json.dumps(response)
-    
-    display_chat_history(json_data)
+
+    st.write(type(json_data))
+    #display_chat_history(json_data)
     
     
     
