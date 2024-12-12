@@ -117,7 +117,7 @@ def generate_answer(question):
     # Display chats
     for message in st.session_state.chat_history:
         # Extract the content from the string representation of the message
-        match = re.search(r"content='(.*?)'", message)
+        st.write("message:",message)
     
     return answer, doc_source, response
 
