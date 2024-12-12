@@ -112,6 +112,12 @@ def generate_answer(question):
     doc_source = [d.page_content for d in explanation]
 
     #st.write("explanation:",explanation)
+
+
+    # Display chats
+    for message in st.session_state.chat_history:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
     
     return answer, doc_source, response
 
