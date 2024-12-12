@@ -111,6 +111,8 @@ def generate_answer(question):
     explanation = response.get("source_documents", [])
     doc_source = [d.page_content for d in explanation]
 
+    st.write("Source:",doc_source)
+    
     return answer, doc_source, response
 
 def display_chat_history(json_data):
