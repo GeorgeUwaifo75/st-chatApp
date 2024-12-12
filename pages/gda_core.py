@@ -185,6 +185,8 @@ def handle_userinput(question):
     st.write(response)
 
 #******* Begin
+    chat_history = response.get("chat_history", [])
+    
     for i, message in enumerate(chat_history):
         # Extract the content from the string representation of the message
         match = re.search(r"content='(.*?)'", message)
