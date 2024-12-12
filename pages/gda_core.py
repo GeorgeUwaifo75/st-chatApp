@@ -199,7 +199,7 @@ def handle_userinput(question):
     with st.chat_message("assistant"):
         st.write(answer)
 
-    st.write(type(response))
+    st.write(response)
     #json_data = json.loads(response)
     
     
