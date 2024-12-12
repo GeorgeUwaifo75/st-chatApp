@@ -168,8 +168,9 @@ def handle_userinput(question):
     with st.chat_message("assistant"):
         st.write(answer)
 
-    st.write(type(response))
+    #st.write(type(response))
     #json_data = json.loads(response)
+    json_data = response
     #display_chat_history(json_data)
     #st.write(response)  # Return only the answer from the response
 
