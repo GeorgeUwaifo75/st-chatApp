@@ -208,12 +208,12 @@ def handle_userinput(question):
     except Exception as e:
       print ("JSON error encountered when serializing dict:", e)
 
-    #st.write("Type of response after conversion:",type(json_data))
-    #st.write("Value of response after conversion:",json_data)
+    st.write("Type of response after conversion:",type(dump_resp))
+    st.write("Value of response after conversion:",dump_resp)
     
     #json_data = response
     
-    display_chat_history(dump_resp)
+    #display_chat_history(dump_resp)
     #st.write(response)  # Return only the answer from the response
 
 
