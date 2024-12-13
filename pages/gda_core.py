@@ -115,9 +115,9 @@ def generate_answer(question):
 
 
     # Display chats
-    for message in st.session_state.chat_history:
+    #for message in st.session_state.chat_history:
         # Extract the content from the string representation of the message
-        st.write("message:",message)
+    #     st.write("message:",message)
     
     return answer, doc_source, response
 
@@ -176,7 +176,7 @@ def handle_userinput(question):
     st.write(response)
     #st.write(type(response))
 
-    json_data = str(response)
+    #json_data = str(response)
     
     #json_data = json.dumps(json_data)
 
