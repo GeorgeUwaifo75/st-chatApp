@@ -1,43 +1,27 @@
 import streamlit as st
-import openai
-import rag
+from transformers import pipeline
 
-# Load the OpenAI API key from the secrets file
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+# Load the model
+model = pipeline("text-generation", model="t5-base")
 
-def chatbot_response(prompt, rag_model):
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=prompt,
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.5,
-    )
-    return response.choices[0].text.strip()
+# Set a default model if "model" not in st.session_state:
+st.session_state["model"] = model
 
-def rag_scorer(text):
-    rag_model.load("rag-model")
-    scores = rag_model.score(text)
-    return scores["rationality"], scores["aggression"], scores["greed"]
+# Initialize chat history if "messages" not in st.session_state:
+st.session_state.messages = []
 
-def main():
-    st.title("ChatGPT-like App with RAG")
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
-    # Initialize the chat history
-    chat_history = []
+# Accept user input if prompt := st.chat_input("What is up?"):
+# Add user message to chat history
+st.session_state.messages.append({"role": "user", "content": prompt})
 
-    # Create a container for the chat history
-    chat_container = st.beta_container()
+# Generate a response from the model
+response = st.session_state["model"](prompt, max_length=50, do_sample=True)
 
-    # Create a function to render the chat history
-    def render_chat_history():
-        with chat_container:
-            for message in chat_history:
-                if message.startswith("User:"):
-                    role = "user"
-                else:
-                    role = "assistant"
-                st.markdown(f'<div class="chat-message {role}">{message}</div>')
-
-    # Create a function
+# Display the response in a chat message container
+with st.chat_message("assistant"):
+    st.markdown(response[0]["generated_text"])
