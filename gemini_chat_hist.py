@@ -1,24 +1,40 @@
 import streamlit as st
-from langchain.chains import create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
+import random
+import time
 
-st.write("AI Chat with History")
+# Streamed response emulator
+def response_generator():
+    response = random.choice(
+        [
+            "Hello there! How can I assist you today?",
+            "Hi, human! Is there anything I can help you with?",
+            "Do you need help?",
+        ]
+    )
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
 
-qa_system_prompt = """You are an assistant for question-answering tasks. \
-Use the following pieces of retrieved context to answer the question. \
-If you don't know the answer, just say that you don't know. \
-Use three sentences maximum and keep the answer concise.\
+st.title("Simple chat")
+# Initialize chat history if "messages" not in st.session_state:
+st.session_state.messages = []
 
-{context}"""
-qa_prompt = ChatPromptTemplate.from_messages(
-    [
-        ("system", qa_system_prompt),
-        MessagesPlaceholder("chat_history"),
-        ("human", "{input}"),
-    ]
-)
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
+# Accept user input
+if prompt := st.chat_input("What is up?"):
+    # Add user message to chat history
+    st.session_state.messages.append({"role": "user", "content": prompt})
 
-question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
+    # Display user message in chat message container
+    with st.chat_message("user"):
+        st.markdown(prompt)
 
-rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
+    # Display assistant response in chat message container
+    with st.chat_message("assistant"):
+        response = response_generator()
+        for response_line in response:
+            st.write(response_line)
