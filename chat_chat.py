@@ -1,40 +1,43 @@
 import streamlit as st
-import random
-import time
+import openai
+import rag
 
-# Streamed response emulator
-def response_generator():
-    response = random.choice(
-        [
-            "Hello there! How can I assist you today?",
-            "Hi, human! Is there anything I can help you with?",
-            "Do you need help?",
-        ]
+# Load the OpenAI API key from the secrets file
+openai.api_key = st.secrets["OPENAI_API_KEY"]
+
+def chatbot_response(prompt, rag_model):
+    response = openai.Completion.create(
+        model="text-davinci-003",
+        prompt=prompt,
+        max_tokens=1024,
+        n=1,
+        stop=None,
+        temperature=0.5,
     )
-    for word in response.split():
-        yield word + " "
-        time.sleep(0.05)
+    return response.choices[0].text.strip()
 
-st.title("Simple chat 1")
-# Initialize chat history if "messages" not in st.session_state:
-st.session_state.messages = []
+def rag_scorer(text):
+    rag_model.load("rag-model")
+    scores = rag_model.score(text)
+    return scores["rationality"], scores["aggression"], scores["greed"]
 
-# Display chat messages from history on app rerun
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+def main():
+    st.title("ChatGPT-like App with RAG")
 
-# Accept user input
-if prompt := st.chat_input("What is up?"):
-    # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    # Initialize the chat history
+    chat_history = []
 
-    # Display user message in chat message container
-    with st.chat_message("user"):
-        st.markdown(prompt)
+    # Create a container for the chat history
+    chat_container = st.beta_container()
 
-    # Display assistant response in chat message container
-    with st.chat_message("assistant"):
-        response = response_generator()
-        for response_line in response:
-            st.write(response_line)
+    # Create a function to render the chat history
+    def render_chat_history():
+        with chat_container:
+            for message in chat_history:
+                if message.startswith("User:"):
+                    role = "user"
+                else:
+                    role = "assistant"
+                st.markdown(f'<div class="chat-message {role}">{message}</div>')
+
+    # Create a function
