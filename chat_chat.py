@@ -20,7 +20,7 @@ prompt = st.chat_input("What is up?")
 st.session_state.messages.append({"role": "user", "content": prompt})
 
 # Generate a response from the model
-response = st.session_state["model"](prompt, max_length=50, do_sample=True)
+response = st.session_state[model](prompt, max_length=50, do_sample=True)
 
 # Display the response in a chat message container
 with st.chat_message("assistant"):
