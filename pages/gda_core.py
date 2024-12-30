@@ -111,6 +111,14 @@ def generate_answer(question):
     explanation = response.get("source_documents", [])
     doc_source = [d.page_content for d in explanation]
 
+
+    #st.title("AI assistant")
+    #user_input = st.text_input("You:", "")
+    #if st.button("Send"):
+    #     response = lang_chain.generate_response(user_input)
+    st.text_area("Chatbot:", response, height=100)
+
+    
     #st.write("explanation:",explanation)
 
 
