@@ -135,7 +135,7 @@ def display_chat_history():
             else:
                  content = str(message)
             #st.write("Value:",str(message))
-            st.write("Index:",i)
+            #st.write("Index:",i)
             
             if "HumanMessage" in str(message):
                 st.write(f"  Human {i//2 + 1}: {content}")
