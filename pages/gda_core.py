@@ -134,7 +134,8 @@ def display_chat_history():
                 typeval=0
             else:
                 typeval=1
-                
+            st.write("Type:",typeval
+            
             if hasattr(message, "content"):
                content = message.content
             elif hasattr(message, "text"):
