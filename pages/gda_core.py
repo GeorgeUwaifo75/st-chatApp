@@ -38,7 +38,6 @@ def upload_ivieAi():
     data = json.loads(json_data)
 
     # Extract the first "reply" values from each item in "allpushdata"
-    # replies = []
     text = ""
     for item in data["allpushdata"]:
         first_reply = item["replies"][0]["reply"]
@@ -175,30 +174,7 @@ def handle_userinput(question):
         st.write(answer)
 
     st.write(response)
-    #st.write(type(response))
-
-    #json_data = str(response)
     
-    #json_data = json.dumps(json_data)
-
-    #st.write(type(json_data))
-    #display_chat_history(json_data)
-    
-    
-    
-    #json_data = response
-    
-    
-    #st.write(response)  # Return only the answer from the response
-
-
-
-    # Append assistant answer to history
-    #st.session_state.chat_history.append({"role": "assistant", "content": answer})
-    
-    # Append the document sources
-    #st.session_state.source.append({"question": question, "answer": answer, "document": doc_source})
-
 
 
 
