@@ -132,7 +132,7 @@ def display_chat_history():
         for i, message in enumerate(st.session_state.chat_history):
             if "HumanMessage" in str(message):
                 typeval=0
-            elif:
+            else:
                 typeval=1
                 
             if hasattr(message, "content"):
