@@ -141,8 +141,11 @@ def display_chat_history():
             elif "AIMessage" in str(message):
                 st.write(f"  AI {i//2 + 1}: {content}")
             else:
-                st.write(f"  Unrecognized Message {i//2 +1}: {content}")
-                st.write("Value:",{i//2 +1})
+                #st.write(f"  Unrecognized Message {i//2 +1}: {content}")
+                with st.chat_message("user"):
+                    st.markdown(content)
+
+                #st.write("Value:",{i//2 +1})
     else:
         st.write("No chat history yet.")
 
