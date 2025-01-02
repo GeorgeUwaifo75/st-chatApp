@@ -125,9 +125,16 @@ def display_chat_history():
     """
     Displays the chat history from the session state in a readable format.
     """
+    typeval=0
+    
     if st.session_state.chat_history:
         st.write("Chat History:")
         for i, message in enumerate(st.session_state.chat_history):
+            if "HumanMessage" in str(message):
+                typeval=0
+            elif:
+                typeval=1
+                
             if hasattr(message, "content"):
                content = message.content
             elif hasattr(message, "text"):
@@ -142,8 +149,12 @@ def display_chat_history():
                 st.write(f"  AI {i//2 + 1}: {content}")
             else:
                 #st.write(f"  Unrecognized Message {i//2 +1}: {content}")
-                with st.chat_message("user"):
-                    st.markdown(content)
+                if typeval==0:
+                    with st.chat_message("user"):
+                        st.markdown(content)
+                else:
+                    with st.chat_message("assistant"):
+                        st.markdown(content)
 
                 #st.write("Value:",{i//2 +1})
     else:
