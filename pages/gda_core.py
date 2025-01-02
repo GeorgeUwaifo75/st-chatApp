@@ -121,46 +121,31 @@ def generate_answer(question):
     
     return answer, doc_source, response
 
-def display_chat_history():
+def display_chat_history(json_data):
     """
-    Displays the chat history from the session state in a readable format.
+    Displays the chat history from the given JSON data in a readable format.
+
+    Args:
+        json_data (dict): A dictionary representing the JSON structure.
     """
-    typeval=0
+
+    chat_history = json_data.get("chat_history", [])
     
-    if st.session_state.chat_history:
-        st.write("Chat History:")
-        for i, message in enumerate(st.session_state.chat_history):
-            if "HumanMessage" in str(message):
-                typeval=0
-            else:
-                typeval=1
-            st.write("Message:",str(message))
-            
-            if hasattr(message, "content"):
-               content = message.content
-            elif hasattr(message, "text"):
-                 content = message.text
-            else:
-                 content = str(message)
-            #st.write("Value:",str(message))
-            
-            if "HumanMessage" in str(message):
-                st.write(f"  Human {i//2 + 1}: {content}")
-            elif "AIMessage" in str(message):
-                st.write(f"  AI {i//2 + 1}: {content}")
-            else:
-                #st.write(f"  Unrecognized Message {i//2 +1}: {content}")
-                if typeval==0:
-                    with st.chat_message("user"):
-                        st.markdown(content)
-                else:
-                    with st.chat_message("assistant"):
-                        st.markdown(content)
+    st.write("Chat History:")
+    for i, message in enumerate(chat_history):
+        # Extract the content from the string representation of the message
+        match = re.search(r"content='(.*?)'", message)
+        if match:
+            content = match.group(1)
+        else:
+          content = "Could not parse message"
 
-                #st.write("Value:",{i//2 +1})
-    else:
-        st.write("No chat history yet.")
-
+        if "HumanMessage" in message:
+            st.write(f"  Human {i//2 + 1}: {content}")
+        elif "AIMessage" in message:
+            st.write(f"  AI {i//2 + 1}: {content}")
+        else:
+          st.write(f"  Unrecognized Message {i//2 +1}: {content}")
 
 # Handling user questions 
 def handle_userinput(question):
@@ -187,9 +172,9 @@ def handle_userinput(question):
    
     with st.chat_message("assistant"):
         st.write(answer)
-    #st.write(response)
+
+    st.write(response)
     
-    display_chat_history()
 
 
 
@@ -284,7 +269,7 @@ def main():
                                 
                             #convert to chunks
                             text_chunks = get_text_chunks(raw_text)
-                            #st.write(text_chunks)
+                            st.write(text_chunks)
 
                             #embeddings
                             vectorstore = get_vectorstore(text_chunks)
