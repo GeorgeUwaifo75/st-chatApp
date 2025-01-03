@@ -30,7 +30,7 @@ response = requests.get(json_url)
 json_data = response.content
 
 urls = []
-
+formatted_answer=""
     
 #Upload IvieAI dataset
 def upload_ivieAi():
