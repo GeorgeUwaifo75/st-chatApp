@@ -159,9 +159,9 @@ def handle_userinput(question):
     # Answer the question
     answer, doc_source, response = generate_answer(question)
    
-    with st.chat_message("assistant"):
+    #with st.chat_message("assistant"):
         #st.write(answer)
-        st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
+        #st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
     #st.write(response)
     
     #display_chat_history()
