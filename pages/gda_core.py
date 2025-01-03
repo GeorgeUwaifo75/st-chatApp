@@ -149,6 +149,20 @@ def display_chat_history():
         st.write("No chat history yet.")
 
 
+def display_colored_text(answer, color="brown"):
+  """Displays the answer with a specified color, handling different data types."""
+
+  if isinstance(answer, (list, tuple)):
+    formatted_answer = "\n".join(f"- {item}" for item in answer)
+  elif isinstance(answer, dict):
+    formatted_answer = json.dumps(answer, indent=2) #Pretty printing for dictionaries
+  elif isinstance(answer, str) and answer.startswith("```"): #For code blocks:
+     formatted_answer = answer
+     return st.code(formatted_answer, language=None) # Code block, uses st.code
+  else:
+    formatted_answer = str(answer) # Convert other types to string
+
+
 # Handling user questions 
 def handle_userinput(question):
         
@@ -161,7 +175,10 @@ def handle_userinput(question):
    
     with st.chat_message("assistant"):
         #st.write(answer)
-        st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
+        #st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
+        
+        display_colored_text(answer)
+        st.markdown(f"<p style='color:{color};'>{formatted_answer}</p>", unsafe_allow_html=True)
     #st.write(response)
     
     display_chat_history()
