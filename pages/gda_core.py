@@ -134,8 +134,6 @@ def display_chat_history():
                  content = message.text
             else:
                  content = str(message)
-            #st.write("Value:",str(message))
-            #st.write("Index:",i)
             
             if "HumanMessage" in str(message):
                 st.write(f"  Human {i//2 + 1}: {content}")
@@ -150,30 +148,17 @@ def display_chat_history():
                     with st.chat_message("assistant"):
                         st.markdown(content)
                         
-                #st.write("Value:",{i//2 +1})
+                
     else:
         st.write("No chat history yet.")
 
 
 # Handling user questions 
 def handle_userinput(question):
-    #response = st.session_state.conversation({"question": question})
-    #st.session_state.chat_history = response['chat_history']
-    #st.write(response)  # Return only the answer from the response
-   
- 
-# Append user question to history
-    #st.session_state.chat_history.append({"role": "user", "content": question})
-    
-    # Display chats
-    #for message in st.session_state.chat_history:
-    #    with st.chat_message(message["role"]):
-    #        st.markdown(message["content"])
-
-    
+        
     # Add user question
-    with st.chat_message("user"):
-        st.markdown(question)
+    #with st.chat_message("user"):
+    #    st.markdown(question)
 
     # Answer the question
     answer, doc_source, response = generate_answer(question)
