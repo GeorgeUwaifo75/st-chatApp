@@ -1,76 +1,38 @@
 import os
-
 import streamlit as st
-
 import pandas as pd
-
 import requests
-
 import json
-
 import re
-
 import urllib.request
-
-
-
 from langchain.document_loaders import TextLoader
-
 from langchain.document_loaders import UnstructuredURLLoader
-
-
-
 from dotenv import load_dotenv
-
 from PyPDF2 import PdfReader
-
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-
-
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
-
 from langchain_community.vectorstores import FAISS
-
 from langchain.memory import ConversationBufferMemory
-
 from langchain.chains import ConversationalRetrievalChain
-
-
-
 from langchain.embeddings import HuggingFaceEmbeddings
-
 from langchain.chains.question_answering import load_qa_chain
-
 from langchain import HuggingFaceHub
-
 from langchain_community.llms import HuggingFaceEndpoint
 
 
 
-
-
 json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
-
 #json_url = os.environ.get("JSON_URL")
-
 response = requests.get(json_url)
-
 json_data = response.content
 
-
-
 urls = []
-
-
-
     
 
 #Upload IvieAI dataset
-
 def upload_ivieAi():
-
-    # Load the JSON data into a Python dictionary
+# Load the JSON data into a Python dictionary
 
     data = json.loads(json_data)
 
@@ -88,8 +50,6 @@ def upload_ivieAi():
 
         text += first_reply + "\n"
 
-    
-
     return text
 
 
@@ -99,7 +59,6 @@ def upload_ivieAi():
 #Handle URL Input
 
 def handle_urlinput(url_input):
-
     urls.append(url_input)
 
 
@@ -124,15 +83,11 @@ def get_pdf_text(pdf_docs):
 
 def get_web_text():
 
-    
-
     text = ""
 
     #main_placeholder.text("Processing...")
 
     loader = UnstructuredURLLoader(
-
-
 
     urls     
 
