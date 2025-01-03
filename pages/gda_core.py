@@ -157,8 +157,8 @@ def display_chat_history():
 def handle_userinput(question):
         
     # Add user question
-    #with st.chat_message("user"):
-    #    st.markdown(question)
+    with st.chat_message("user"):
+        st.markdown(question)
 
     # Answer the question
     answer, doc_source, response = generate_answer(question)
@@ -167,7 +167,7 @@ def handle_userinput(question):
         st.write(answer)
     #st.write(response)
     
-    #display_chat_history()
+    display_chat_history()
 
 
 
