@@ -30,7 +30,7 @@ response = requests.get(json_url)
 json_data = response.content
 
 urls = []
-formatted_answer=""
+
     
 #Upload IvieAI dataset
 def upload_ivieAi():
@@ -177,8 +177,8 @@ def handle_userinput(question):
         #st.write(answer)
         #st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
         
-        display_colored_text(answer)
-        st.markdown(f"<p style='color:brown;'>{formatted_answer}</p>", unsafe_allow_html=True)
+        
+        st.markdown(f"<p style='color:brown;'>{display_colored_text(answer)}</p>", unsafe_allow_html=True)
     #st.write(response)
     
     display_chat_history()
