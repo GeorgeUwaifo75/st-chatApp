@@ -182,7 +182,7 @@ def handle_userinput(question):
         st.write(answer)
     #st.write(response)
     
-    display_chat_history()
+    #display_chat_history()
 
 
 
@@ -229,6 +229,7 @@ def main():
    
     st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
 
+    display_chat_history()
     user_question = st.text_input("Ask a question about your documents:")
 
    
@@ -277,7 +278,7 @@ def main():
                                 
                             #convert to chunks
                             text_chunks = get_text_chunks(raw_text)
-                            st.write(text_chunks)
+                            #st.write(text_chunks)
 
                             #embeddings
                             vectorstore = get_vectorstore(text_chunks)
