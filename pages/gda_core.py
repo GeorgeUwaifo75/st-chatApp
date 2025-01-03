@@ -111,14 +111,9 @@ def generate_answer(question):
     doc_source = [d.page_content for d in explanation]
 
     
-    #st.write("explanation:",explanation)
+    st.write("Source:",doc_source)
 
-
-    # Display chats
-    #for message in st.session_state.chat_history:
-        # Extract the content from the string representation of the message
-    #     st.write("message:",message)
-    
+ 
     return answer, doc_source, response
 
 def display_chat_history():
