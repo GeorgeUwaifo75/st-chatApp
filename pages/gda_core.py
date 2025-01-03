@@ -157,8 +157,8 @@ def display_chat_history():
 def handle_userinput(question):
         
     # Add user question
-    with st.chat_message("user"):
-        st.markdown(question)
+    #with st.chat_message("user"):
+    #    st.markdown(question)
 
     # Answer the question
     answer, doc_source, response = generate_answer(question)
@@ -214,7 +214,7 @@ def main():
    
     st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
 
-    display_chat_history()
+    #display_chat_history()
     user_question = st.text_input("Ask a question about your documents:")
 
    
