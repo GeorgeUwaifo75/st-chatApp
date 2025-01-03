@@ -164,7 +164,7 @@ def handle_userinput(question):
         st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
     #st.write(response)
     
-    #display_chat_history()
+    display_chat_history()
 
 
 
