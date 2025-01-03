@@ -31,7 +31,26 @@ json_data = response.content
 
 urls = []
 
-    
+
+# Helper function
+def display_colored_text(answer, color="brown"):
+  """Displays the answer with a specified color, handling different data types."""
+
+  if isinstance(answer, (list, tuple)):
+    formatted_answer = "\n".join(f"- {item}" for item in answer)
+  elif isinstance(answer, dict):
+    formatted_answer = json.dumps(answer, indent=2) #Pretty printing for dictionaries
+  elif isinstance(answer, str) and answer.startswith("```"): #For code blocks:
+     formatted_answer = answer
+     return st.code(formatted_answer, language=None) # Code block, uses st.code
+  else:
+    formatted_answer = str(answer) # Convert other types to string
+
+
+  st.markdown(f"<p style='color:{color};'>{formatted_answer}</p>", unsafe_allow_html=True)
+
+
+
 #Upload IvieAI dataset
 def upload_ivieAi():
     # Load the JSON data into a Python dictionary
@@ -112,9 +131,9 @@ def generate_answer(question):
 
     
     #st.write("Source:",doc_source)
-    #New  
+    #New
     #display_chat_history()
- 
+
     return answer, doc_source, response
 
 def display_chat_history():
@@ -122,54 +141,45 @@ def display_chat_history():
     Displays the chat history from the session state in a readable format.
     """
     if st.session_state.chat_history:
-        st.write("Chat History:")
-        for i, message in enumerate(st.session_state.chat_history):
+       #st.write("Chat History:")
+       for i, message in enumerate(st.session_state.chat_history):
             if hasattr(message, "content"):
                content = message.content
             elif hasattr(message, "text"):
                  content = message.text
             else:
                  content = str(message)
-            
+
             if "HumanMessage" in str(message):
-                st.write(f"  Human {i//2 + 1}: {content}")
+                 with st.chat_message("user"):
+                     display_colored_text(content)
+
             elif "AIMessage" in str(message):
-                st.write(f"  AI {i//2 + 1}: {content}")
+                 with st.chat_message("assistant"):
+                     display_colored_text(content)
             else:
-                #st.write(f"  Unrecognized Message {i//2 +1}: {content}")
-                if i%2 == 0:
-                    with st.chat_message("user"):
-                        st.markdown(content)
-                else:
+                 if i%2 == 0:
+                      with st.chat_message("user"):
+                           display_colored_text(content)
+                 else:
                     with st.chat_message("assistant"):
-                        st.markdown(content)
-                        
-                
+                        display_colored_text(content)
+
+
     else:
         st.write("No chat history yet.")
 
 
 
-
-# Handling user questions 
+# Handling user questions
 def handle_userinput(question):
-        
-    # Add user question
-    #with st.chat_message("user"):
-    #    st.markdown(question)
 
     # Answer the question
     answer, doc_source, response = generate_answer(question)
-   
-    with st.chat_message("assistant"):
-        st.write(answer)
-        #st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
-        
+
     #st.write(response)
     
     display_chat_history()
-
-
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
@@ -214,13 +224,17 @@ def main():
    
     st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
 
-    #display_chat_history()
-    user_question = st.text_input("Ask a question about your documents:")
+    # Display the chat history (if any)
+    display_chat_history()
 
-   
+    # Input field for user questions - placed *below* the chat history
+    user_question = st.text_input("Ask a question about your documents:", key="user_input")
+
     # Ask a question
     if user_question:
         handle_userinput(user_question)
+        st.session_state.user_input = "" #clear the input box
+        st.rerun() # set the focus back to the input
     
     #DCD6D0    
     
