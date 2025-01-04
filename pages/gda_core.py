@@ -34,6 +34,9 @@ def clear_text():
     st.session_state.my_text = st.session_state.widget
     #st.session_state.widget = ""
 
+def clear_text2():
+    st.session_state.widget = ""
+
 #Upload IvieAI dataset
 def upload_ivieAi():
     # Load the JSON data into a Python dictionary
@@ -205,6 +208,7 @@ def main():
     # Ask a question
     if user_question:
         handle_userinput(user_question)
+        clear_text2()
         
     
     #DCD6D0    
