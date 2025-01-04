@@ -237,9 +237,8 @@ def main():
                 
                 process_url = st.button("Process Docs")
                 if process_url:    
-                    goAhead = True
                     with st.spinner("Processing"):
-                            
+                            goAhead = True
                             if doc_type == "URL":
                                 raw_text = get_web_text()
                             elif doc_type == "PDF":
