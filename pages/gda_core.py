@@ -29,7 +29,7 @@ response = requests.get(json_url)
 json_data = response.content
 
 urls = []
-goAhead = True
+global goAhead = False
 
 #def clear_text():
 #    st.session_state.my_text = st.session_state.widget
