@@ -29,7 +29,6 @@ response = requests.get(json_url)
 json_data = response.content
 
 urls = []
-goAhead = False
 
 #def clear_text():
 #    st.session_state.my_text = st.session_state.widget
@@ -206,8 +205,7 @@ def main():
     #user_question = st.text_input("Ask a question about your documents:", key='widget', on_change=clear_text)  
    
     # Ask a question
-    #if user_question:
-    if user_question and goAhead == True:
+    if user_question:
         handle_userinput(user_question)
        
         
@@ -238,7 +236,7 @@ def main():
                 process_url = st.button("Process Docs")
                 if process_url:    
                     with st.spinner("Processing"):
-                            goAhead = True
+                            
                             if doc_type == "URL":
                                 raw_text = get_web_text()
                             elif doc_type == "PDF":
