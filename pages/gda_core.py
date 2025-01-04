@@ -199,12 +199,13 @@ def main():
     st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
 
     #display_chat_history()
-    #user_question = st.text_input("Ask a question about your documents:")
-    user_question = st.text_input("Ask a question about your documents:", key='widget', on_change=clear_text)  
+    user_question = st.text_input("Ask a question about your documents:")
+    #user_question = st.text_input("Ask a question about your documents:", key='widget', on_change=clear_text)  
 
     # Ask a question
     if user_question:
         handle_userinput(user_question)
+        clear_text()
     
     #DCD6D0    
     
