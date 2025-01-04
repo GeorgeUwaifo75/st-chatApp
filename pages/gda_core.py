@@ -29,6 +29,7 @@ response = requests.get(json_url)
 json_data = response.content
 
 urls = []
+goAhead = False
 
 #def clear_text():
 #    st.session_state.my_text = st.session_state.widget
@@ -93,6 +94,7 @@ def get_vectorstore(text_chunks):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
     #embeddings = HuggingFaceEmbeddings()
     vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
+    goAhead = True
     return vectorstore
 
 def generate_answer(question):
