@@ -208,7 +208,7 @@ def main():
    
     # Ask a question
     #if user_question:
-    if user_question & goAhead==True:
+    if user_question and goAhead is True:
         handle_userinput(user_question)
        
         
