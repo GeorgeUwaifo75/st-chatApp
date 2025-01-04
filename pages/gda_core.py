@@ -207,7 +207,8 @@ def main():
     #user_question = st.text_input("Ask a question about your documents:", key='widget', on_change=clear_text)  
    
     # Ask a question
-    if user_question:
+    #if user_question:
+    if user_question and goAhead==True:
         handle_userinput(user_question)
        
         
