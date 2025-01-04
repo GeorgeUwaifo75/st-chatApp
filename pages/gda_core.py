@@ -163,8 +163,9 @@ def get_conversation_chain(vectorstore):
     #llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
 
     llm = HuggingFaceEndpoint(
-    endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.12, max_length=512)
+    endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.25, max_length=512)
     
+    #endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.12, max_length=512)  ...The last 
     #endpoint_url="mistralai/Mistral-7B-Instruct-v0.2/",temperature=0.65, max_length=512)
     #endpoint_url="Qwen/QwQ-32B-Preview",temperature=0.65, max_length=512)
     #endpoint_url="meta-llama/Llama-3.1-8B-Instruct/",temperature=0.3, max_length=512)
