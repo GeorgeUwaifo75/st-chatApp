@@ -115,50 +115,40 @@ def display_chat_history():
     """
     Displays the chat history from the session state in a readable format.
     """
-    count+=1
     
     if st.session_state.chat_history:
-        st.write("Chat History:")
+        # Only display chat history if it exists
         for i, message in enumerate(st.session_state.chat_history):
             if hasattr(message, "content"):
-               content = message.content
+                content = message.content
             elif hasattr(message, "text"):
                  content = message.text
             else:
                  content = str(message)
             
             if "HumanMessage" in str(message):
-                st.write(f"  Human {i//2 + 1}: {content}")
+                with st.chat_message("user"):
+                    st.markdown(content)
             elif "AIMessage" in str(message):
-                st.write(f"  AI {i//2 + 1}: {content}")
-            else:
-                #st.write(f"  Unrecognized Message {i//2 +1}: {content}")
-                if i%2 == 0:
-                    with st.chat_message("user"):
-                        st.markdown(content)
-                else:
-                    with st.chat_message("assistant"):
-                        st.markdown(content)
-                
+                with st.chat_message("assistant"):
+                    st.markdown(content)
+
     else:
         st.write("No chat history yet.")
 
 # Handling user questions 
 def handle_userinput(question):
         
-    # Add user question
-    #with st.chat_message("user"):
-    #    st.markdown(question)
-
     # Answer the question
     answer, doc_source, response = generate_answer(question)
    
     with st.chat_message("assistant"):
         st.write(answer)
-        #st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
         
-    #st.write(response)
+    # Set the flag indicating that chat history should be displayed
+    st.session_state.chat_history_displayed = True
     display_chat_history()
+
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
@@ -199,6 +189,9 @@ def main():
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
+    # Initialize the flag
+    if "chat_history_displayed" not in st.session_state:
+        st.session_state.chat_history_displayed = False
    
     st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
 
