@@ -29,6 +29,7 @@ response = requests.get(json_url)
 json_data = response.content
 
 urls = []
+count = 0
 
 #def clear_text():
 #    st.session_state.my_text = st.session_state.widget
@@ -114,6 +115,8 @@ def display_chat_history():
     """
     Displays the chat history from the session state in a readable format.
     """
+    count+=1
+    
     if st.session_state.chat_history:
         st.write("Chat History:")
         for i, message in enumerate(st.session_state.chat_history):
@@ -155,8 +158,8 @@ def handle_userinput(question):
         #st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
         
     #st.write(response)
-    
-    display_chat_history()
+    if count > 0:
+        display_chat_history()
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
