@@ -157,7 +157,9 @@ def handle_userinput(question):
         #st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
         
     #st.write(response)
+    #if st.session_state.chat_history_displayed == True:
     display_chat_history()
+    st.session_state.chat_history_displayed = True
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
