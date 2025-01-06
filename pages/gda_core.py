@@ -116,7 +116,7 @@ def display_chat_history():
     Displays the chat history from the session state in a readable format.
     """
     
-    if st.session_state.chat_history:
+    if st.session_state.chat_history and st.session_state.chat_history_displayed == True:
         # Only display chat history if it exists
         for i, message in enumerate(st.session_state.chat_history):
             if hasattr(message, "content"):
