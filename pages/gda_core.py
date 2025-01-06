@@ -115,7 +115,6 @@ def display_chat_history():
     """
     Displays the chat history from the session state in a readable format.
     """
-    count+=1
     
     if st.session_state.chat_history:
         st.write("Chat History:")
