@@ -199,6 +199,10 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
    
+    # Initialize the flag
+    if "chat_history_displayed" not in st.session_state:
+        st.session_state.chat_history_displayed = False
+        
     st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
 
     #display_chat_history()
