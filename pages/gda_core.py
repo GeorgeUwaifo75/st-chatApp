@@ -29,7 +29,7 @@ response = requests.get(json_url)
 json_data = response.content
 
 urls = []
-count = 0
+
 
 #def clear_text():
 #    st.session_state.my_text = st.session_state.widget
@@ -158,8 +158,7 @@ def handle_userinput(question):
         #st.markdown(f"<p style='color:brown;'>{answer}</p>", unsafe_allow_html=True) 
         
     #st.write(response)
-    if count > 0:
-        display_chat_history()
+    display_chat_history()
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
