@@ -115,9 +115,10 @@ def display_chat_history():
     """
     Displays the chat history from the session state in a readable format.
     """
-    
+    #st.header("GiTeksol :green[Document] Assistant [*:blue[GDA]*]")
+
     if st.session_state.chat_history:
-        st.write("Chat History:")
+        st.write(":green[*Chat History:*]")
         for i, message in enumerate(st.session_state.chat_history):
             if hasattr(message, "content"):
                content = message.content
