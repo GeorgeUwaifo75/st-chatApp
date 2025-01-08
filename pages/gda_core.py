@@ -195,7 +195,7 @@ def get_conversation_chain(vectorstore):
 
     
     llm = HuggingFaceEndpoint(
-    endpoint_url="deepseek-ai/DeepSeek-V3",temperature=0.25, max_length=512)
+    endpoint_url="deepseek-ai/DeepSeek-V3-Base",temperature=0.25, max_length=512)
 
     #endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.25, max_length=512)
     
