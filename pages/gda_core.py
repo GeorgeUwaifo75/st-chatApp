@@ -145,7 +145,7 @@ def display_chat_history():
         st.write("No chat history yet.")
 
 # Handling user questions 
-def handle_userinput2(question):
+def handle_userinput(question):
         
     # Add user question
     #with st.chat_message("user"):
@@ -164,7 +164,7 @@ def handle_userinput2(question):
     st.session_state.chat_history_displayed = True
 
 
-def handle_userinput(question):
+def handle_userinput2(question):
     
     # Answer the question
     answer, doc_source, response = generate_answer(question)
