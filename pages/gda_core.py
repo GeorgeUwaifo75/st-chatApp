@@ -170,21 +170,24 @@ def handle_userinput(question):
     answer, doc_source, response = generate_answer(question)
    
     with st.chat_message("assistant"):
-        # Split the answer into words
-        words = answer.split()
-        
-        # Loop through each word and display it
-        for word in words:
-            st.write(word, end=" ", flush=True)  # Display word followed by a space and flush
-            time.sleep(0.1) # Add a delay, adjust as needed for speed
-        
-        # Add a newline at the end of the sentence.
-        st.write("")
+        # Split the answer into lines
+        lines = answer.splitlines()
+
+        for line in lines:
+            # Split each line into words
+            words = line.split()
+            
+            for word in words:
+                st.write(word, end=" ", flush=True)
+                time.sleep(0.05)  # Adjust delay as needed
+            
+            # Add a newline after each line
+            st.write("")
+
        
     if st.session_state.chat_history_displayed == True:
         display_chat_history()
     st.session_state.chat_history_displayed = True
-
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
