@@ -1,4 +1,5 @@
 import os
+import time
 import streamlit as st
 import pandas as pd
 import requests
@@ -144,7 +145,7 @@ def display_chat_history():
         st.write("No chat history yet.")
 
 # Handling user questions 
-def handle_userinput(question):
+def handle_userinput2(question):
         
     # Add user question
     #with st.chat_message("user"):
@@ -161,6 +162,29 @@ def handle_userinput(question):
     if st.session_state.chat_history_displayed == True:
         display_chat_history()
     st.session_state.chat_history_displayed = True
+
+
+def handle_userinput(question):
+    
+    # Answer the question
+    answer, doc_source, response = generate_answer(question)
+   
+    with st.chat_message("assistant"):
+        # Split the answer into words
+        words = answer.split()
+        
+        # Loop through each word and display it
+        for word in words:
+            st.write(word, end=" ", flush=True)  # Display word followed by a space and flush
+            time.sleep(0.1) # Add a delay, adjust as needed for speed
+        
+        # Add a newline at the end of the sentence.
+        st.write("")
+       
+    if st.session_state.chat_history_displayed == True:
+        display_chat_history()
+    st.session_state.chat_history_displayed = True
+
 
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
