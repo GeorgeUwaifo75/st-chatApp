@@ -195,18 +195,14 @@ def get_conversation_chain(vectorstore):
 
     
     llm = HuggingFaceEndpoint(
-    endpoint_url="deepseek-ai/DeepSeek-V3-Base",temperature=0.25, max_length=512)
-
-    #endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.25, max_length=512)
+    endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.25, max_length=512)
     
     #endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.12, max_length=512)  ...The last 
     #endpoint_url="mistralai/Mistral-7B-Instruct-v0.2/",temperature=0.65, max_length=512)
     #endpoint_url="Qwen/QwQ-32B-Preview",temperature=0.65, max_length=512)
     #endpoint_url="meta-llama/Llama-3.1-8B-Instruct/",temperature=0.3, max_length=512)
 
-    st.write("[DeepSeek-V3]")
-    
-    #st.write("[Mistral-V0.3]")
+    st.write("[Mistral-V0.3]")
     #st.write("[Gemini")
     
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
