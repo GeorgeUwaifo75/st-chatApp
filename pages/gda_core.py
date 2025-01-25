@@ -24,6 +24,11 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain import HuggingFaceHub
 from langchain_community.llms import HuggingFaceEndpoint
 
+# Load model directly
+from transformers import AutoModelForCausalLM
+#model = AutoModelForCausalLM.from_pretrained("deepseek-ai/DeepSeek-R1", trust_remote_code=True)
+
+
 json_url = 'https://api.npoint.io/03cc552f40aca75a2bf1'
 #json_url = os.environ.get("JSON_URL")
 response = requests.get(json_url)
@@ -193,7 +198,8 @@ def handle_userinput2(question):
 def get_conversation_chain(vectorstore):
     #llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
 
-    
+    model = AutoModelForCausalLM.from_pretrained("deepseek-ai/DeepSeek-R1", trust_remote_code=True)
+
     llm = HuggingFaceEndpoint(
     endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.25, max_length=512)
     
@@ -207,7 +213,8 @@ def get_conversation_chain(vectorstore):
     
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
-        llm=llm,
+        #llm=llm,
+        llm=model,
         retriever=vectorstore.as_retriever(),
         memory=memory
     )
