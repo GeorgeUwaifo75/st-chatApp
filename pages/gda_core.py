@@ -193,12 +193,12 @@ def handle_userinput2(question):
 # Storing converstations as chain of outputs
 def get_conversation_chain(vectorstore):
     #llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro')
-    llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash')
+    #llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash')
 
    
-    #llm = HuggingFaceEndpoint(
+    llm = HuggingFaceEndpoint(
     #endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.25, max_length=512)
-    ##endpoint_url="deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",temperature=0.25, max_length=512)
+    endpoint_url="deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",temperature=0.25, max_length=512)
     
     #endpoint_url="mistralai/Mistral-7B-Instruct-v0.3/",temperature=0.12, max_length=512)  ...The last 
     #endpoint_url="mistralai/Mistral-7B-Instruct-v0.2/",temperature=0.65, max_length=512)
