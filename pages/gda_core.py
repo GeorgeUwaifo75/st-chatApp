@@ -205,8 +205,8 @@ def get_conversation_chain(vectorstore):
     #endpoint_url="Qwen/QwQ-32B-Preview",temperature=0.65, max_length=512)
     #endpoint_url="meta-llama/Llama-3.1-8B-Instruct/",temperature=0.3, max_length=512)
 
-    #st.write("[Mistral-V0.3]")
-    st.write("[Gemini")
+    st.write("[Mistral-V0.3]")
+    #st.write("[Gemini")
     
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
